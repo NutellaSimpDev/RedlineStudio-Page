@@ -475,25 +475,15 @@ article[id] {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  scroll-margin-top: 170px;
 }
 
-.contact-proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 30px;
-}
-
-.contact-proof span {
-  padding: 9px 12px;
+.contact-intro {
+  max-width: 620px;
+  margin: -6px 0 32px;
   color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .service-list {
