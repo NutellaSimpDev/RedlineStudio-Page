@@ -11,6 +11,76 @@ function revealFallback() {
   });
 }
 
+function trackEvent(eventName, params = {}) {
+  if (typeof window.gtag !== 'function') return;
+
+  window.gtag('event', eventName, {
+    page_path: window.location.pathname,
+    ...params
+  });
+}
+
+function initAnalyticsEvents() {
+  document.querySelectorAll('a[href="#contacto"], a[href="index.html#contacto"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('cta_contact_click', {
+        cta_text: link.textContent.trim(),
+        link_url: link.getAttribute('href')
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="services.html#"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('service_detail_click', {
+        cta_text: link.textContent.trim(),
+        service_name: link.getAttribute('href').split('#')[1] || 'unknown',
+        link_url: link.getAttribute('href')
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('mailto_click', { link_url: link.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('.footer-social a').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('social_click', {
+        social_network: link.getAttribute('aria-label') || 'unknown',
+        link_url: link.href
+      });
+    });
+  });
+
+  document.querySelectorAll('.nav-links a, .m-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackEvent('nav_click', {
+        cta_text: link.textContent.trim(),
+        link_url: link.getAttribute('href')
+      });
+    });
+  });
+
+  const form = document.querySelector('form[action*="web3forms"]');
+  if (!form) return;
+
+  let formStarted = false;
+  form.addEventListener('focusin', () => {
+    if (formStarted) return;
+    formStarted = true;
+    trackEvent('form_start');
+  });
+
+  form.addEventListener('submit', () => {
+    trackEvent('generate_lead', {
+      form_name: 'contacto_redline'
+    });
+  });
+}
+
 function initMenu(gsapInstance) {
   const menuToggle = document.querySelector('.menu-toggle');
   const closeLinks = document.querySelectorAll('.toggle-close');
@@ -88,6 +158,8 @@ function initInterface() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initAnalyticsEvents();
+
   if (!window.gsap || !window.ScrollTrigger) {
     revealFallback();
     return;
