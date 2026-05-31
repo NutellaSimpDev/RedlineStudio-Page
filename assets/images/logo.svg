@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 2000 2000"
+   height="2000"
+   width="2000"
+   xml:space="preserve"
+   id="svg2"
+   version="1.1"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6"><clipPath
+       id="clipPath22"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path20"
+         d="M 0,175 H 1500 V 671.955 H 0 Z" /></clipPath><clipPath
+       id="clipPath34"
+       clipPathUnits="userSpaceOnUse"><path
+         id="path32"
+         d="M 0,828.046 H 1500 V 1325 H 0 Z" /></clipPath></defs><g
+     transform="matrix(1.3333333,0,0,-1.3333333,0,2000)"
+     id="g10"><text
+       id="text14"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1093.79272461px;font-family:'Bebas Neue';-inkscape-font-specification:BebasNeue-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(1,0,0,-0.13636578,19.4272,701.5254)"><tspan
+         id="tspan12"
+         y="0"
+         x="0 376.26468 586.27289 1053.3224">LINE</tspan></text>
+<g
+       id="g16"><g
+         clip-path="url(#clipPath22)"
+         id="g18"><text
+           id="text26"
+           style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1258.36083984px;font-family:'Bebas Neue';-inkscape-font-specification:BebasNeue-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           transform="matrix(1,0,0,-0.91915141,12.6128,330.0537)"><tspan
+             id="tspan24"
+             y="0"
+             x="0 507.11942 963.90436">RED</tspan></text>
+</g></g><g
+       id="g28"><g
+         clip-path="url(#clipPath34)"
+         id="g30"><text
+           id="text38"
+           style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1258.36083984px;font-family:'Bebas Neue';-inkscape-font-specification:BebasNeue-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           transform="matrix(1,0,0,-0.91915141,12.6128,330.0537)"><tspan
+             id="tspan36"
+             y="0"
+             x="0 507.11942 963.90436">RED</tspan></text>
+</g></g></g></svg>
