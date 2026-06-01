@@ -328,7 +328,7 @@ article[id] {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: 480px;
   opacity: 0;
   transform: translateY(30px);
   will-change: opacity, transform;
@@ -345,88 +345,60 @@ article[id] {
 
 .hero-mockup-wrap {
   position: relative;
-  width: min(42vw, 560px);
-  min-width: 390px;
-  padding: 18px;
+  width: min(33vw, 430px);
+  min-width: 340px;
+  padding: 22px 18px 24px;
   font-family: 'Inter', sans-serif;
-  background: rgba(10, 10, 10, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  box-shadow: 0 36px 100px rgba(0, 0, 0, 0.62), 0 0 70px rgba(255, 0, 43, 0.12);
+  background: linear-gradient(145deg, #2a2a2c, #080809 62%, #1b1b1d);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 42px;
+  box-shadow:
+    0 42px 110px rgba(0, 0, 0, 0.68),
+    0 0 80px rgba(255, 0, 43, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -18px 34px rgba(255, 255, 255, 0.04);
   transform: perspective(1200px) rotateY(-8deg) rotateX(3deg);
 }
 
-.bw-chrome {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 14px;
-  background: #141414;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
+.hero-mockup-wrap::after {
+  position: absolute;
+  inset: 12px;
+  content: '';
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
 }
 
-.bw-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.bw-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-
-.bw-d1 { background: #ff5f57; }
-.bw-d2 { background: #febc2e; }
-.bw-d3 { background: #28c840; }
-
-.bw-url {
-  display: flex;
-  flex: 1;
-  gap: 8px;
-  align-items: center;
-  min-width: 0;
-  padding: 6px 12px;
-  background: #1e1e1e;
-  border-radius: 7px;
-}
-
-.bw-shield {
-  width: 10px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.28);
-  clip-path: polygon(50% 0, 100% 18%, 86% 78%, 50% 100%, 14% 78%, 0 18%);
-}
-
-.bw-url-text {
-  overflow: hidden;
-  color: #888888;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.bw-url-text span {
-  color: #d8d8d8;
+.ipad-camera {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  z-index: 2;
+  width: 58px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  transform: translateX(-50%);
 }
 
 .bw-body {
   position: relative;
   overflow: hidden;
-  background: #0f0f0f;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(255, 0, 43, 0.2), transparent 32%),
+    linear-gradient(135deg, rgba(255, 0, 43, 0.14), transparent 38%),
+    #0f0f0f;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
+  border-radius: 28px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.72);
 }
 
 .bw-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px;
+  padding: 18px 22px 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -445,7 +417,7 @@ article[id] {
 
 .bw-nav-links {
   display: flex;
-  gap: 18px;
+  gap: 14px;
 }
 
 .bw-nav-links span {
@@ -459,7 +431,7 @@ article[id] {
 
 .bw-content {
   position: relative;
-  padding: 28px 24px 24px;
+  padding: 24px 22px 22px;
 }
 
 .bw-tag {
@@ -488,7 +460,7 @@ article[id] {
   margin-bottom: 10px;
   color: #f5f5f5;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.55rem;
+  font-size: clamp(1.45rem, 2.1vw, 1.85rem);
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -500,7 +472,7 @@ article[id] {
 }
 
 .bw-sub {
-  max-width: 330px;
+  max-width: 300px;
   margin-bottom: 18px;
   color: #777777;
   font-size: 0.72rem;
@@ -522,7 +494,7 @@ article[id] {
 
 .bw-metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 16px;
 }
@@ -537,7 +509,7 @@ article[id] {
 }
 
 .bw-mcard {
-  padding: 14px 12px;
+  padding: 12px;
 }
 
 .bw-mcard::before {
@@ -569,7 +541,7 @@ article[id] {
 .bw-mvalue {
   color: #f0f0f0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 900;
   line-height: 1;
 }
@@ -590,7 +562,7 @@ article[id] {
 
 .bw-charts {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
