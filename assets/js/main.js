@@ -275,15 +275,15 @@ function initInterface() {
     );
 
     gsap.to(heroVisual, {
-      x: 280,
+      x: 180,
       opacity: 0,
-      scale: 0.94,
-      rotate: 5,
+      scale: 0.96,
+      rotate: 3,
       ease: 'none',
       scrollTrigger: {
         trigger: '.hero-section',
-        start: '35% top',
-        end: 'bottom 20%',
+        start: '58% top',
+        end: 'bottom top',
         scrub: 0.6
       }
     });
