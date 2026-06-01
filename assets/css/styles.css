@@ -331,9 +331,7 @@ article[id] {
   align-items: center;
   justify-content: center;
   min-height: 350px;
-  opacity: 0;
-  transform: translateY(30px);
-  will-change: opacity, transform;
+  opacity: 1;
 }
 
 .hero-visual::before {
@@ -362,7 +360,6 @@ article[id] {
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -18px 34px rgba(255, 255, 255, 0.04);
   transform: perspective(1200px) rotateY(-8deg) rotateX(3deg);
-  animation: mockupFloat 7s ease-in-out infinite;
 }
 
 .hero-mockup-wrap::after {
@@ -372,17 +369,6 @@ article[id] {
   pointer-events: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 23px;
-}
-
-@keyframes mockupFloat {
-  0%,
-  100% {
-    transform: perspective(1200px) rotateY(-8deg) rotateX(3deg) translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: perspective(1200px) rotateY(-6deg) rotateX(2deg) translate3d(0, -10px, 0);
-  }
 }
 
 .ipad-camera {

@@ -267,27 +267,6 @@ function initInterface() {
   const heroVisual = document.querySelector('.hero-visual');
   if (heroVisual) {
     initBusinessMockup();
-
-    gsap.fromTo(
-      heroVisual,
-      { opacity: 0, x: 116, y: 22, rotate: 3, scale: 0.96 },
-      { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, duration: 1.15, delay: 0.25, ease: 'power3.out' }
-    );
-
-    gsap.to(heroVisual, {
-      x: 140,
-      y: -24,
-      opacity: 0.72,
-      scale: 0.98,
-      rotate: 3,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top+=1',
-        end: '+=320',
-        scrub: 0.55
-      }
-    });
   }
 
   const cardTrigger = document.querySelector('.service-grid, .bento-container');
