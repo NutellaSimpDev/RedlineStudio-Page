@@ -165,6 +165,93 @@ function initMenu() {
   menuInitialized = true;
 }
 
+function countMockMetric(element, target, duration = 1200, decimals = 0) {
+  if (!element) return;
+
+  let current = 0;
+  const step = target / (duration / 16);
+  const timer = window.setInterval(() => {
+    current = Math.min(current + step, target);
+    element.textContent = decimals ? current.toFixed(decimals) : Math.round(current);
+    if (current >= target) window.clearInterval(timer);
+  }, 16);
+}
+
+function initBusinessMockup() {
+  const mockup = document.getElementById('hero-mockup');
+  if (!mockup || mockup.dataset.loaded === 'true') return;
+
+  mockup.dataset.loaded = 'true';
+
+  ['bw-mc1', 'bw-mc2', 'bw-mc3'].forEach((id, index) => {
+    window.setTimeout(() => document.getElementById(id)?.classList.add('bw-loaded'), index * 180);
+  });
+
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-rev'), 4.2, 1200, 1), 260);
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-leads'), 247, 1400), 430);
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-rate'), 38, 1100), 620);
+
+  [
+    ['bw-b1', 18],
+    ['bw-b2', 26],
+    ['bw-b3', 34],
+    ['bw-b4', 42],
+    ['bw-b5', 51],
+    ['bw-b6', 56]
+  ].forEach(([id, height], index) => {
+    window.setTimeout(() => {
+      const bar = document.getElementById(id);
+      if (!bar) return;
+      bar.style.transition = 'height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      bar.style.height = `${height}px`;
+    }, 220 + index * 110);
+  });
+
+  [
+    ['bw-f1', 100],
+    ['bw-f2', 42],
+    ['bw-f3', 21],
+    ['bw-f4', 9]
+  ].forEach(([id, width], index) => {
+    window.setTimeout(() => {
+      const fill = document.getElementById(id);
+      if (fill) fill.style.width = `${width}%`;
+    }, 620 + index * 170);
+  });
+
+  let visitors = 4;
+  window.setInterval(() => {
+    const node = document.getElementById('bw-visitors');
+    if (!node) return;
+    visitors = Math.max(1, Math.min(12, visitors + Math.round((Math.random() - 0.45) * 3)));
+    node.textContent = visitors;
+  }, 2800);
+
+  let seconds = 12;
+  window.setInterval(() => {
+    const node = document.getElementById('bw-timer');
+    if (!node) return;
+    seconds = seconds <= 0 ? 30 : seconds - 1;
+    node.textContent = `${seconds}s`;
+  }, 1000);
+
+  const cursor = document.getElementById('bw-cursor');
+  const body = mockup.querySelector('.bw-body');
+  if (!cursor || !body) return;
+
+  body.addEventListener('mouseenter', () => {
+    cursor.style.display = 'block';
+  });
+  body.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
+  });
+  body.addEventListener('mousemove', (event) => {
+    const rect = body.getBoundingClientRect();
+    cursor.style.left = `${event.clientX - rect.left - 3}px`;
+    cursor.style.top = `${event.clientY - rect.top - 3}px`;
+  });
+}
+
 function initInterface() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -179,22 +266,25 @@ function initInterface() {
 
   const heroVisual = document.querySelector('.hero-visual');
   if (heroVisual) {
+    initBusinessMockup();
+
     gsap.fromTo(
       heroVisual,
-      { opacity: 0, x: 80, y: 22, rotate: 1 },
-      { opacity: 1, x: 0, y: 0, rotate: 0, duration: 1.15, delay: 0.25, ease: 'power3.out' }
+      { opacity: 0, x: 96, y: 18, rotate: 2 },
+      { opacity: 1, x: 0, y: 0, rotate: 0, duration: 1.05, delay: 0.25, ease: 'power3.out' }
     );
 
     gsap.to(heroVisual, {
+      x: 360,
       opacity: 0,
-      x: 180,
-      scale: 0.96,
-      ease: 'power2.out',
+      scale: 0.94,
+      rotate: 5,
+      ease: 'none',
       scrollTrigger: {
         trigger: '.hero-section',
         start: 'top top',
-        end: 'bottom 42%',
-        scrub: true
+        end: 'bottom 35%',
+        scrub: 0.45
       }
     });
   }
@@ -245,6 +335,7 @@ function initInterface() {
 document.addEventListener('DOMContentLoaded', () => {
   initAnalyticsEvents();
   initMenu();
+  initBusinessMockup();
 
   window.setTimeout(() => {
     if (document.getElementById('boot')?.style.display !== 'none') revealFallback();
