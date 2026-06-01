@@ -273,20 +273,6 @@ function initInterface() {
       { opacity: 0, x: 96, y: 18, rotate: 2 },
       { opacity: 1, x: 0, y: 0, rotate: 0, duration: 1.05, delay: 0.25, ease: 'power3.out' }
     );
-
-    gsap.to(heroVisual, {
-      x: 180,
-      opacity: 0,
-      scale: 0.96,
-      rotate: 3,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero-section',
-        start: '58% top',
-        end: 'bottom top',
-        scrub: 0.6
-      }
-    });
   }
 
   const cardTrigger = document.querySelector('.service-grid, .bento-container');

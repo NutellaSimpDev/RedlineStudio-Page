@@ -40,9 +40,11 @@ body {
 .no-js .glass-nav,
 .no-js .ui-reveal,
 .no-js .ui-card,
+.no-js .hero-visual,
 .boot-timeout .glass-nav,
 .boot-timeout .ui-reveal,
-.boot-timeout .ui-card {
+.boot-timeout .ui-card,
+.boot-timeout .hero-visual {
   opacity: 1 !important;
   transform: none !important;
 }
