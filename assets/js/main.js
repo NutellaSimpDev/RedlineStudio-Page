@@ -275,17 +275,17 @@ function initInterface() {
     );
 
     gsap.to(heroVisual, {
-      x: 96,
-      y: -18,
-      opacity: 0.58,
-      scale: 0.97,
-      rotate: 2,
+      x: 140,
+      y: -24,
+      opacity: 0.72,
+      scale: 0.98,
+      rotate: 3,
       ease: 'none',
       scrollTrigger: {
         trigger: '.hero-section',
-        start: '48% top',
-        end: 'bottom top',
-        scrub: 0.7
+        start: 'top top+=1',
+        end: '+=320',
+        scrub: 0.55
       }
     });
   }
