@@ -33,9 +33,16 @@ body {
   display: none;
 }
 
+.boot-timeout .boot-screen {
+  display: none !important;
+}
+
 .no-js .glass-nav,
 .no-js .ui-reveal,
-.no-js .ui-card {
+.no-js .ui-card,
+.boot-timeout .glass-nav,
+.boot-timeout .ui-reveal,
+.boot-timeout .ui-card {
   opacity: 1 !important;
   transform: none !important;
 }
@@ -228,6 +235,12 @@ article[id] {
   opacity: 0;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
+  transition: opacity 0.35s var(--ease-apple), visibility 0.35s var(--ease-apple);
+}
+
+.mobile-menu-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
 }
 
 .mobile-links-container {
@@ -250,8 +263,13 @@ article[id] {
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(25px);
-  transition: color 0.2s var(--ease-apple);
+  transition: color 0.2s var(--ease-apple), opacity 0.3s var(--ease-apple), transform 0.3s var(--ease-apple);
   will-change: transform, opacity;
+}
+
+.mobile-menu-overlay.is-open .m-link {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .m-link span {
@@ -316,17 +334,8 @@ article[id] {
   transform: translateY(30px);
 }
 
-.services-page .apple-headline {
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 1.05;
-}
-
 .apple-headline span {
   color: var(--led-red);
-}
-
-.services-page .apple-headline span {
-  color: var(--text-muted);
 }
 
 .section-title {
@@ -575,6 +584,20 @@ article[id] {
   font-size: 0.9rem;
   line-height: 1.5;
   text-align: center;
+}
+
+.form-note.is-success {
+  color: #f5f5f7;
+}
+
+.form-note.is-error {
+  color: var(--led-red);
+}
+
+.action-trigger[disabled] {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
 }
 
 .full-width {

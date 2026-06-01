@@ -23,7 +23,10 @@
   <meta name="twitter:description" content="Web premium, SEO, SEM y automatización con IA para captar mejores oportunidades comerciales." />
   <meta name="twitter:image" content="https://redlinestudio.es/assets/images/logo.png" />
 
-  <script>document.documentElement.classList.remove('no-js');</script>
+  <script>
+    document.documentElement.classList.remove('no-js');
+    window.__redlineBootTimer = window.setTimeout(() => document.documentElement.classList.add('boot-timeout'), 2500);
+  </script>
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="apple-touch-icon" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -165,7 +168,7 @@
         <span class="panel-tag">[ INICIAR PROTOCOLO ]</span>
         <h2 class="apple-headline contact-title">CONTACTO.</h2>
         <p class="contact-intro">Cuéntanos qué quieres mejorar y te respondemos con una evaluación inicial en menos de 24 horas hábiles.</p>
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form action="https://api.web3forms.com/submit" method="POST" data-form-name="contact_home">
           <input type="hidden" name="access_key" value="ddf395ca-bd76-4b7d-8581-604357cbf7b0" />
           <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO" />
 
@@ -182,7 +185,7 @@
           <input id="lead-contact" class="form-control" name="Comunicacion" type="text" inputmode="email" autocomplete="email" placeholder="Correo corporativo / teléfono" required />
 
           <button type="submit" class="action-trigger full-width">Agendar evaluación de crecimiento</button>
-          <p class="form-note">Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.</p>
+          <p class="form-note" data-default-message="Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.">Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.</p>
         </form>
       </div>
     </section>

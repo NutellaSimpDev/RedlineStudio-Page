@@ -23,7 +23,10 @@
   <meta name="twitter:description" content="Servicios digitales premium para empresas que necesitan más leads, autoridad y reuniones comerciales." />
   <meta name="twitter:image" content="https://redlinestudio.es/assets/images/logo.png" />
 
-  <script>document.documentElement.classList.remove('no-js');</script>
+  <script>
+    document.documentElement.classList.remove('no-js');
+    window.__redlineBootTimer = window.setTimeout(() => document.documentElement.classList.add('boot-timeout'), 2500);
+  </script>
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="apple-touch-icon" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +65,7 @@
     <div class="mobile-links-container">
       <a href="index.html" class="m-link"><span>// 01</span>Inicio</a>
       <a href="services.html" class="m-link active"><span>// 02</span>Servicios</a>
-      <a href="index.html#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
+      <a href="#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
     </div>
   </div>
 
@@ -86,7 +89,7 @@
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="services.html" class="active">Servicios</a>
-      <a href="index.html#contacto">Contacto</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
       <span></span>
@@ -121,7 +124,7 @@
               <li>Arquitectura de información pensada para conversión.</li>
               <li>Optimización técnica para velocidad, SEO y medición.</li>
             </ul>
-            <a href="index.html#contacto" class="learn-more-link">Quiero mejorar mi web ↗</a>
+            <a href="#contacto" class="learn-more-link">Quiero mejorar mi web ↗</a>
           </div>
         </article>
 
@@ -137,7 +140,7 @@
               <li>Sistemas visuales consistentes para web, redes y ventas.</li>
               <li>Lineamientos de comunicación visual para crecer sin perder coherencia.</li>
             </ul>
-            <a href="index.html#contacto" class="learn-more-link">Quiero fortalecer mi marca ↗</a>
+            <a href="#contacto" class="learn-more-link">Quiero fortalecer mi marca ↗</a>
           </div>
         </article>
 
@@ -153,7 +156,7 @@
               <li>Landing pages, CTAs y formularios orientados a leads.</li>
               <li>Optimización de conversiones con eventos y métricas.</li>
             </ul>
-            <a href="index.html#contacto" class="learn-more-link">Quiero captar leads ↗</a>
+            <a href="#contacto" class="learn-more-link">Quiero captar leads ↗</a>
           </div>
         </article>
 
@@ -169,7 +172,7 @@
               <li>Google Ads, Meta Ads y campañas de captación.</li>
               <li>Análisis de keywords, consultas y oportunidades por servicio.</li>
             </ul>
-            <a href="index.html#contacto" class="learn-more-link">Quiero posicionar en Google ↗</a>
+            <a href="#contacto" class="learn-more-link">Quiero posicionar en Google ↗</a>
           </div>
         </article>
 
@@ -185,18 +188,37 @@
               <li>Precalificación automática de solicitudes.</li>
               <li>Integración con procesos, formularios y equipos existentes.</li>
             </ul>
-            <a href="index.html#contacto" class="learn-more-link">Quiero automatizar mi atención ↗</a>
+            <a href="#contacto" class="learn-more-link">Quiero automatizar mi atención ↗</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="contacto" class="viewport-section is-auto-height">
-      <div class="glass-panel-large ui-card is-centered">
+    <section class="viewport-section is-auto-height">
+      <div id="contacto" class="glass-panel ui-card full-width contact-panel">
         <span class="panel-tag">[ EVALUACIÓN INICIAL ]</span>
         <h2 class="apple-headline contact-title">CONTACTO.</h2>
-        <p class="contact-panel-copy">Cuéntanos qué necesitas mejorar y prepararemos una evaluación preliminar en menos de 24 horas hábiles.</p>
-        <a href="index.html#contacto" class="action-trigger">Agendar evaluación de crecimiento</a>
+        <p class="contact-intro">Cuéntanos qué servicio quieres mejorar y te respondemos con una evaluación inicial en menos de 24 horas hábiles.</p>
+        <form action="https://api.web3forms.com/submit" method="POST" data-form-name="contact_services">
+          <input type="hidden" name="access_key" value="ddf395ca-bd76-4b7d-8581-604357cbf7b0" />
+          <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO - Servicios" />
+          <input type="hidden" name="source_page" value="services" />
+
+          <label class="sr-only" for="service-lead-name">Nombre o razón social</label>
+          <input id="service-lead-name" class="form-control" name="Identificador" type="text" autocomplete="organization" placeholder="Tu nombre o razón social" required />
+
+          <label class="sr-only" for="service-lead-need">Qué necesitas mejorar</label>
+          <input id="service-lead-need" class="form-control" name="Necesidad" type="text" autocomplete="off" placeholder="Web / SEO / Publicidad / Branding / IA" required />
+
+          <label class="sr-only" for="service-lead-objective">Objetivo del proyecto</label>
+          <input id="service-lead-objective" class="form-control" name="Objetivo" type="text" autocomplete="off" placeholder="Objetivo comercial del proyecto" required />
+
+          <label class="sr-only" for="service-lead-contact">Correo corporativo o teléfono</label>
+          <input id="service-lead-contact" class="form-control" name="Comunicacion" type="text" inputmode="email" autocomplete="email" placeholder="Correo corporativo / teléfono" required />
+
+          <button type="submit" class="action-trigger full-width">Agendar evaluación de crecimiento</button>
+          <p class="form-note" data-default-message="Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.">Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.</p>
+        </form>
       </div>
     </section>
   </main>
