@@ -338,9 +338,19 @@ article[id] {
   opacity: 1;
 }
 
+.brand-mark {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 72px;
+}
+
 .nav-logo {
   position: relative;
   z-index: 1001;
+  width: 72px;
   height: 72px;
   object-fit: contain;
   cursor: pointer;
@@ -354,6 +364,7 @@ article[id] {
 
 .nav-links {
   display: flex;
+  flex: 0 0 auto;
   gap: 24px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
@@ -1266,6 +1277,12 @@ article[id] {
   }
 
   .nav-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .brand-mark {
+    width: 54px;
     height: 45px;
   }
 
