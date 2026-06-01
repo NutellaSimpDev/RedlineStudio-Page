@@ -270,9 +270,24 @@ function initInterface() {
 
     gsap.fromTo(
       heroVisual,
-      { opacity: 0, x: 96, y: 18, rotate: 2 },
-      { opacity: 1, x: 0, y: 0, rotate: 0, duration: 1.05, delay: 0.25, ease: 'power3.out' }
+      { opacity: 0, x: 116, y: 22, rotate: 3, scale: 0.96 },
+      { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, duration: 1.15, delay: 0.25, ease: 'power3.out' }
     );
+
+    gsap.to(heroVisual, {
+      x: 96,
+      y: -18,
+      opacity: 0.58,
+      scale: 0.97,
+      rotate: 2,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: '48% top',
+        end: 'bottom top',
+        scrub: 0.7
+      }
+    });
   }
 
   const cardTrigger = document.querySelector('.service-grid, .bento-container');
