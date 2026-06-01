@@ -8,7 +8,7 @@ function revealFallback() {
   if (boot) boot.style.display = 'none';
   if (nav) nav.style.opacity = '1';
 
-  document.querySelectorAll('.ui-reveal, .ui-card').forEach((element) => {
+  document.querySelectorAll('.ui-reveal, .ui-card, .hero-visual').forEach((element) => {
     element.style.opacity = '1';
     element.style.transform = 'none';
   });
@@ -176,6 +176,28 @@ function initInterface() {
 
   gsap.to('#nav', { opacity: 1, duration: 1, ease: 'power2.out' });
   gsap.to('.ui-reveal', { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: 'power3.out' });
+
+  const heroVisual = document.querySelector('.hero-visual');
+  if (heroVisual) {
+    gsap.fromTo(
+      heroVisual,
+      { opacity: 0, x: 80, y: 22, rotate: 1 },
+      { opacity: 1, x: 0, y: 0, rotate: 0, duration: 1.15, delay: 0.25, ease: 'power3.out' }
+    );
+
+    gsap.to(heroVisual, {
+      opacity: 0,
+      x: 180,
+      scale: 0.96,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom 42%',
+        scrub: true
+      }
+    });
+  }
 
   const cardTrigger = document.querySelector('.service-grid, .bento-container');
   if (cardTrigger) {
