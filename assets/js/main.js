@@ -15,6 +15,8 @@ function revealFallback() {
 }
 
 let menuInitialized = false;
+const analyticsConsentKey = 'redline_analytics_consent';
+const gaMeasurementId = 'G-EB9CT1636Z';
 
 function clearBootTimeout() {
   window.clearTimeout(window.__redlineBootTimer);
@@ -27,6 +29,64 @@ function trackEvent(eventName, params = {}) {
   window.gtag('event', eventName, {
     page_path: window.location.pathname,
     ...params
+  });
+}
+
+function loadAnalytics() {
+  if (window.__redlineAnalyticsLoaded) return;
+
+  window.__redlineAnalyticsLoaded = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+  document.head.appendChild(script);
+
+  window.gtag('js', new Date());
+  window.gtag('config', gaMeasurementId);
+}
+
+function getStoredAnalyticsConsent() {
+  try {
+    return window.localStorage.getItem(analyticsConsentKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function setStoredAnalyticsConsent(value) {
+  try {
+    window.localStorage.setItem(analyticsConsentKey, value);
+  } catch (error) {
+    return;
+  }
+}
+
+function initCookieConsent() {
+  const consent = getStoredAnalyticsConsent();
+  const banner = document.getElementById('cookie-consent');
+
+  if (consent === 'accepted') {
+    loadAnalytics();
+    return;
+  }
+
+  if (!banner || consent === 'rejected') return;
+
+  banner.hidden = false;
+  banner.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
+    setStoredAnalyticsConsent('accepted');
+    loadAnalytics();
+    banner.hidden = true;
+  });
+
+  banner.querySelector('[data-cookie-reject]')?.addEventListener('click', () => {
+    setStoredAnalyticsConsent('rejected');
+    banner.hidden = true;
   });
 }
 
@@ -67,15 +127,22 @@ function initAnalyticsEvents() {
 
   document.querySelectorAll('.nav-links a, .m-link').forEach((link) => {
     link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      if (href === '#contacto' || href === 'index.html#contacto') return;
+
       trackEvent('nav_click', {
         cta_text: link.textContent.trim(),
-        link_url: link.getAttribute('href')
+        link_url: href
       });
     });
   });
 
   document.querySelectorAll('form[action*="web3forms"]').forEach((form) => {
     let formStarted = false;
+    form.querySelector('[data-contact-field]')?.addEventListener('input', (event) => {
+      event.currentTarget.setCustomValidity('');
+    });
+
     form.addEventListener('focusin', () => {
       if (formStarted) return;
       formStarted = true;
@@ -86,6 +153,26 @@ function initAnalyticsEvents() {
 
     form.addEventListener('submit', (event) => handleLeadSubmit(event, form));
   });
+}
+
+function isValidContactValue(value) {
+  const trimmed = value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const phonePattern = /^[+()\d\s.-]+$/;
+  const digitCount = trimmed.replace(/\D/g, '').length;
+  return emailPattern.test(trimmed) || (phonePattern.test(trimmed) && digitCount >= 7);
+}
+
+function validateLeadContact(form) {
+  const contactField = form.querySelector('[data-contact-field]');
+  if (!contactField) return true;
+
+  contactField.setCustomValidity('');
+  if (isValidContactValue(contactField.value)) return true;
+
+  contactField.setCustomValidity('Ingresa un correo válido o un teléfono con al menos 7 dígitos.');
+  contactField.reportValidity();
+  return false;
 }
 
 function setFormMessage(form, message, state) {
@@ -109,6 +196,8 @@ function setFormLoading(form, isLoading) {
 async function handleLeadSubmit(event, form) {
   event.preventDefault();
 
+  if (form.querySelector('[name="botcheck"]')?.checked) return;
+  if (!validateLeadContact(form)) return;
   if (!form.reportValidity()) return;
 
   const formName = form.dataset.formName || 'contacto_redline';
@@ -144,22 +233,51 @@ function initMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const closeLinks = document.querySelectorAll('.toggle-close');
   const mobileMenu = document.querySelector('.mobile-menu-overlay');
+  let lastFocusedElement = null;
 
   if (!menuToggle || !mobileMenu) return;
 
-  function setMenuState(isOpen) {
+  function setMenuState(isOpen, restoreFocus = true) {
+    if (isOpen) lastFocusedElement = document.activeElement;
+
     menuToggle.classList.toggle('active', isOpen);
     mobileMenu.classList.toggle('is-open', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+
+    const firstLink = mobileMenu.querySelector('a');
+    if (isOpen && firstLink) firstLink.focus();
+    if (!isOpen && restoreFocus && lastFocusedElement === menuToggle) menuToggle.focus();
   }
 
   menuToggle.addEventListener('click', () => {
     setMenuState(!mobileMenu.classList.contains('is-open'));
   });
 
-  closeLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+  closeLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false, false)));
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMenuState(false);
+    if (!mobileMenu.classList.contains('is-open')) return;
+
+    if (event.key === 'Escape') {
+      setMenuState(false);
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = Array.from(mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+    if (!focusableElements.length) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
   });
 
   menuInitialized = true;
@@ -261,85 +379,68 @@ function initInterface() {
     return;
   }
 
-  gsap.to('#nav', { opacity: 1, duration: 1, ease: 'power2.out' });
-  gsap.to('.ui-reveal', { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: 'power3.out' });
+  document.getElementById('nav')?.classList.add('is-visible');
+  document.querySelectorAll('.ui-reveal').forEach((element, index) => {
+    element.style.transitionDelay = `${index * 90}ms`;
+    element.classList.add('is-visible');
+  });
 
   const heroVisual = document.querySelector('.hero-visual');
   if (heroVisual) {
     initBusinessMockup();
   }
 
-  const cardTrigger = document.querySelector('.service-grid, .bento-container');
-  if (cardTrigger) {
-    gsap.to('.ui-card', {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: cardTrigger, start: 'top 85%' }
+  const cards = Array.from(document.querySelectorAll('.ui-card'));
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${Math.min(index, 4) * 80}ms`;
+      observer.observe(card);
     });
+  } else {
+    cards.forEach((card) => card.classList.add('is-visible'));
   }
 
   initMenu();
 
-  const masterRhythm = gsap.timeline({ repeat: -1 });
-  masterRhythm
-    .to('.led-pulse', { opacity: 1, duration: 0.1 })
-    .to('.led-pulse', { opacity: 0.1, duration: 0.4, ease: 'power2.out' })
-    .to('.led-sync', { opacity: 0.8, duration: 0.05 }, '-=0.2')
-    .to('.led-sync', { opacity: 0.05, duration: 0.2 })
-    .to('.led-strobe', { opacity: 1, duration: 0.05 })
-    .to('.led-strobe', { opacity: 0.05, duration: 0.05 })
-    .to('.led-strobe', { opacity: 1, duration: 0.05 })
-    .to('.led-strobe', { opacity: 0.1, duration: 0.6, ease: 'power3.out' })
-    .to('.led-fast', { opacity: 0.6, duration: 0.1 }, '-=0.5')
-    .to('.led-fast', { opacity: 0.05, duration: 0.3 });
-
-  const redlineBeat = gsap.timeline({ repeat: -1 });
-  redlineBeat
-    .to('.led-redline', { opacity: 1, duration: 0.05, ease: 'none' })
-    .to('.led-redline', { opacity: 0.1, duration: 0.1 })
-    .to('.led-redline', { opacity: 1, duration: 0.05, ease: 'none' })
-    .to('.led-redline', { opacity: 0.15, duration: 1, ease: 'power3.out' });
-
-  gsap.to('.led-strobe-red', { opacity: 1, duration: 0.05, repeat: -1, repeatDelay: 1.5, yoyo: true });
-
+  let pointerFrame = null;
   document.addEventListener('mousemove', (event) => {
     const xPos = (event.clientX / window.innerWidth - 0.5) * 20;
     const yPos = (event.clientY / window.innerHeight - 0.5) * 20;
-    gsap.to('.glyph-svg', { x: xPos, y: yPos, duration: 0.5, ease: 'power2.out' });
+
+    if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+    pointerFrame = window.requestAnimationFrame(() => {
+      const glyph = document.querySelector('.glyph-svg');
+      if (glyph) glyph.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+    });
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initCookieConsent();
   initAnalyticsEvents();
   initMenu();
   initBusinessMockup();
 
   window.setTimeout(() => {
-    if (document.getElementById('boot')?.style.display !== 'none') revealFallback();
-  }, 2500);
+    const bootElement = document.getElementById('boot');
+    if (!bootElement) {
+      initInterface();
+      return;
+    }
 
-  if (!window.gsap || !window.ScrollTrigger) {
-    revealFallback();
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.ticker.lagSmoothing(0);
-
-  const boot = gsap.timeline({
-    onComplete: () => {
-      const bootElement = document.getElementById('boot');
-      if (bootElement) bootElement.style.display = 'none';
+    bootElement.classList.add('is-hidden');
+    window.setTimeout(() => {
+      bootElement.style.display = 'none';
       clearBootTimeout();
       initInterface();
-    }
-  });
-
-  boot
-    .to('#boot-line', { width: '200px', duration: 0.6, ease: 'power4.inOut' })
-    .to('#boot-line', { height: '0px', opacity: 0, duration: 0.3, delay: 0.2 })
-    .to('#boot', { opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+    }, 420);
+  }, 900);
 });
