@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Firma de Correo Corporativa | Redline Studio</title>
+  <style>
+    :root {
+      --bg: #020202;
+      --panel: #0c0c0e;
+      --panel-soft: #151518;
+      --text: #f5f5f7;
+      --muted: #8d8d92;
+      --line: rgba(255, 255, 255, 0.14);
+      --red: #ff002b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 48px 18px;
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 0, 43, 0.28), transparent 34%),
+        linear-gradient(180deg, #050505 0%, #020202 100%);
+    }
+
+    .shell {
+      width: min(100%, 820px);
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .brand {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .subtitle {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .panel {
+      background: rgba(12, 12, 14, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45), 0 0 80px rgba(255, 0, 43, 0.1);
+      backdrop-filter: blur(24px);
+    }
+
+    .signature-box {
+      display: flex;
+      justify-content: center;
+      padding: clamp(24px, 5vw, 44px);
+      overflow-x: auto;
+      background:
+        linear-gradient(90deg, rgba(255, 0, 43, 0.08), transparent 38%),
+        #ffffff;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .toolbar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .btn-copy {
+      min-height: 48px;
+      padding: 0 22px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      background: var(--red);
+      border: 0;
+      border-radius: 999px;
+      box-shadow: 0 12px 34px rgba(255, 0, 43, 0.24);
+    }
+
+    .alert {
+      display: none;
+      margin: 0 20px 20px;
+      padding: 14px 16px;
+      color: #ffffff;
+      font-size: 0.92rem;
+      text-align: center;
+      background: rgba(255, 0, 43, 0.14);
+      border: 1px solid rgba(255, 0, 43, 0.34);
+      border-radius: 14px;
+    }
+
+    .instructions {
+      margin-top: 24px;
+      padding: 26px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    .instructions h2 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .instructions ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 680px) {
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-copy {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <img class="brand" src="assets/images/logo.png" alt="Redline Studio" />
+      <h1>Firma de correo<br><span>Redline.</span></h1>
+      <p class="subtitle">Firma HTML compatible con Outlook, Gmail y Apple Mail. Usa imágenes absolutas para que funcione al pegarla en clientes de correo.</p>
+    </header>
+
+    <section class="panel">
+      <div class="signature-box" id="signature-container">
+        <!-- INICIO FIRMA REDLINE -->
+        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 650px; font-family: Arial, Helvetica, sans-serif; color: #111111; border-collapse: collapse; line-height: 1.35; text-align: left; background: #ffffff;">
+          <tr>
+            <td valign="middle" style="width: 150px; padding: 0 24px 0 0; text-align: center; line-height: 0;">
+              <a href="https://redlinestudio.es/" target="_blank" style="text-decoration: none; border: 0;">
+                <img src="https://redlinestudio.es/assets/images/logo.png" alt="Redline Studio" width="118" style="display: block; width: 118px; max-width: 118px; height: auto; border: 0;" />
+              </a>
+            </td>
+            <td valign="middle" style="width: 3px; padding: 0 24px 0 0;">
+              <div style="width: 3px; height: 132px; background: #ff002b; line-height: 132px; font-size: 1px;">&nbsp;</div>
+            </td>
+            <td valign="middle" style="padding: 0; text-align: left;">
+              <div style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color: #111111; line-height: 1.15; margin: 0 0 4px; letter-spacing: 0;">
+                Redline Studio
+              </div>
+              <div style="font-size: 13px; color: #ff002b; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; margin: 0 0 12px;">
+                Web · SEO · Leads
+              </div>
+              <div style="font-size: 13.5px; color: #222222; margin: 0 0 8px; font-weight: 700;">
+                <a href="mailto:contacto@redlinestudio.es" style="color: #222222; text-decoration: none;">contacto@redlinestudio.es</a>
+              </div>
+              <div style="font-size: 13.5px; color: #222222; margin: 0 0 12px; font-weight: 700;">
+                <a href="https://redlinestudio.es/" target="_blank" style="color: #222222; text-decoration: none;">redlinestudio.es</a>
+              </div>
+              <div style="font-size: 11px; color: #6b6b70; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.7px;">
+                Desarrollo web corporativo · SEO · SEM<br />
+                Branding · Automatización con IA · Captación comercial
+              </div>
+            </td>
+          </tr>
+        </table>
+        <!-- FIN FIRMA REDLINE -->
+      </div>
+
+      <div class="toolbar">
+        <p>Haz clic para copiar la firma enriquecida. Luego pégala directamente en la configuración de firmas de tu cliente de correo.</p>
+        <button class="btn-copy" type="button" onclick="copySignature()">Copiar firma</button>
+      </div>
+      <div class="alert" id="alert-msg">Firma copiada. Ya puedes pegarla en Outlook, Gmail o Apple Mail.</div>
+    </section>
+
+    <section class="instructions">
+      <h2>Cómo instalarla</h2>
+      <ol>
+        <li>Haz clic en <strong>Copiar firma</strong>.</li>
+        <li>Abre Outlook, Gmail o Apple Mail y entra en configuración de firmas.</li>
+        <li>Crea una firma nueva y pega con <strong>Cmd + V</strong> o <strong>Ctrl + V</strong>.</li>
+        <li>Guarda y envía un correo de prueba para confirmar que logo, enlaces y espaciados cargan bien.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    function copySignature() {
+      const container = document.getElementById('signature-container');
+      const range = document.createRange();
+      const selection = window.getSelection();
+
+      range.selectNode(container);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
+        const copied = document.execCommand('copy');
+        if (copied) {
+          const alertMsg = document.getElementById('alert-msg');
+          alertMsg.style.display = 'block';
+          window.setTimeout(() => {
+            alertMsg.style.display = 'none';
+          }, 3200);
+        }
+      } catch (error) {
+        window.alert('Selecciona la firma manualmente y copia con Cmd/Ctrl + C.');
+      }
+
+      selection.removeAllRanges();
+    }
+  </script>
+</body>
+</html>
