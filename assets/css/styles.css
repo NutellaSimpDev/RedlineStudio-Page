@@ -1283,9 +1283,9 @@ article[id] {
 }
 
 .footer-bottom {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   max-width: var(--max-width);
   padding-top: 24px;
@@ -1293,6 +1293,20 @@ article[id] {
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom .footer-contact {
+  justify-self: start;
+}
+
+.footer-bottom p:not(.powered-by) {
+  justify-self: center;
+  text-align: center;
+}
+
+.footer-bottom .powered-by {
+  justify-self: end;
+  text-align: right;
 }
 
 .powered-by {
@@ -1396,8 +1410,10 @@ article[id] {
   }
 
   .footer-bottom {
+    display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: center;
     text-align: center;
   }
 
