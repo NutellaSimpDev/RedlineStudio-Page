@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Firma de Correo Corporativa | Redline Studio</title>
+  <title>Generador de Firmas Corporativas | Redline Studio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;800&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg: #020202;
@@ -12,248 +18,796 @@
       --panel-soft: #151518;
       --text: #f5f5f7;
       --muted: #8d8d92;
-      --line: rgba(255, 255, 255, 0.14);
+      --line: rgba(255, 255, 255, 0.1);
       --red: #ff002b;
+      --red-glow: rgba(255, 0, 43, 0.35);
+      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       min-height: 100vh;
-      margin: 0;
-      padding: 48px 18px;
       color: var(--text);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at 50% 0%, rgba(255, 0, 43, 0.28), transparent 34%),
+        radial-gradient(circle at 50% 0%, rgba(255, 0, 43, 0.18), transparent 45%),
         linear-gradient(180deg, #050505 0%, #020202 100%);
+      padding: 40px 20px;
     }
 
-    .shell {
-      width: min(100%, 820px);
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .header {
-      margin-bottom: 28px;
+    header {
       text-align: center;
+      margin-bottom: 40px;
     }
 
-    .brand {
-      width: 82px;
-      height: 82px;
-      object-fit: contain;
-      margin-bottom: 18px;
-      filter: brightness(0) invert(1);
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 6vw, 4rem);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: 0;
+      line-height: 1.05;
       text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     h1 span {
       color: var(--red);
+      text-shadow: 0 0 20px var(--red-glow);
     }
 
     .subtitle {
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto;
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.55;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    .panel {
-      background: rgba(12, 12, 14, 0.82);
+    /* Generator Layout */
+    .generator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 960px) {
+      .generator-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-card {
+      background: rgba(12, 12, 14, 0.7);
       border: 1px solid var(--line);
       border-radius: 24px;
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45), 0 0 80px rgba(255, 0, 43, 0.1);
+      padding: 32px;
       backdrop-filter: blur(24px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
     }
 
-    .signature-box {
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
       display: flex;
-      justify-content: center;
-      padding: clamp(24px, 5vw, 44px);
-      overflow-x: auto;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(255, 0, 43, 0.14), transparent 34%),
-        #070707;
-      border-radius: 24px 24px 0 0;
-    }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
       align-items: center;
-      padding: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 10px;
     }
 
-    .toolbar p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
-
-    .btn-copy {
-      min-height: 48px;
-      padding: 0 22px;
-      color: #ffffff;
-      font-size: 0.95rem;
-      font-weight: 800;
-      cursor: pointer;
+    .panel-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
       background: var(--red);
-      border: 0;
-      border-radius: 999px;
-      box-shadow: 0 12px 34px rgba(255, 0, 43, 0.24);
+      border-radius: 99px;
+      box-shadow: 0 0 10px var(--red);
     }
 
-    .alert {
-      display: none;
-      margin: 0 20px 20px;
-      padding: 14px 16px;
-      color: #ffffff;
-      font-size: 0.92rem;
-      text-align: center;
-      background: rgba(255, 0, 43, 0.14);
-      border: 1px solid rgba(255, 0, 43, 0.34);
-      border-radius: 14px;
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 20px;
     }
 
-    .instructions {
+    .form-group label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s var(--ease-apple);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--red);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 14px rgba(255, 0, 43, 0.15);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 24px;
-      padding: 26px;
-      background: var(--panel-soft);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .checkbox-label input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    /* Preview Utilities */
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .preview-mode-toggles {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+    }
+
+    .toggle-btn {
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .toggle-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .preview-canvas {
+      width: 100%;
+      padding: 36px;
+      border-radius: 18px;
+      transition: background-color 0.4s var(--ease-apple);
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+
+    .preview-canvas.light-bg {
+      background-color: #ffffff;
+    }
+
+    .preview-canvas.dark-bg {
+      background-color: #0d0d0f;
+    }
+
+    /* Simulación de inversión de color de modo oscuro en clientes de correo */
+    .preview-canvas.dark-bg #signature-table-container table {
+      color: #e4e4e9 !important;
+    }
+    .preview-canvas.dark-bg #signature-table-container td {
+      color: #a4a4aa !important;
+    }
+    .preview-canvas.dark-bg #signature-table-container td[style*="color: #111111"] {
+      color: #ffffff !important;
+    }
+    .preview-canvas.dark-bg #signature-table-container strong {
+      color: #ffffff !important;
+    }
+    .preview-canvas.dark-bg #signature-table-container a {
+      color: #e4e4e9 !important;
+    }
+
+    /* Signature Container CSS Restsets for accurate rendering */
+    #signature-table-container {
+      width: 100%;
+      min-width: 500px;
+    }
+
+    /* Action Buttons */
+    .actions-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      .actions-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn {
+      height: 48px;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s var(--ease-apple);
+      border: 0;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(255, 0, 43, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 0, 43, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(255, 0, 43, 0.95);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(255, 0, 43, 0.4);
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.4s var(--ease-apple);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Help instructions card */
+    .help-card {
+      margin-top: 32px;
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line);
       border-radius: 20px;
+      padding: 24px;
     }
 
-    .instructions h2 {
-      margin: 0 0 14px;
+    .help-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1rem;
       text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--text);
     }
 
-    .instructions ol {
-      margin: 0;
+    .help-card ol {
       padding-left: 20px;
       color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.65;
+      font-size: 0.88rem;
+      line-height: 1.6;
     }
 
-    .instructions li {
+    .help-card li {
       margin-bottom: 8px;
     }
 
-    @media (max-width: 680px) {
-      .toolbar {
-        grid-template-columns: 1fr;
-      }
+    /* Modal for code raw output */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
 
-      .btn-copy {
-        width: 100%;
-      }
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      background: #0f0f11;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      width: min(90vw, 650px);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transform: translateY(20px);
+      transition: transform 0.3s var(--ease-apple);
+    }
+
+    .modal-backdrop.show .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .code-box {
+      width: 100%;
+      height: 250px;
+      background: #060607;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      color: #39e380;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      padding: 16px;
+      resize: none;
+      outline: none;
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="header">
-      <img class="brand" src="assets/images/logo.png" alt="Redline Studio" />
-      <h1>Firma de correo<br><span>Redline.</span></h1>
-      <p class="subtitle">Firma HTML compatible con Outlook, Gmail y Apple Mail. Usa imágenes absolutas para que funcione al pegarla en clientes de correo.</p>
+  <div class="container">
+    <header>
+      <img class="brand-logo" src="assets/images/logo.png" alt="Redline Studio" />
+      <h1>Firma de correo <span>Redline.</span></h1>
+      <p class="subtitle">
+        Generador de firmas corporativas optimizado para Outlook Desktop (Word Engine), Gmail y Apple Mail. Sin fondos negros estáticos para una total compatibilidad con el modo oscuro.
+      </p>
     </header>
 
-    <section class="panel">
-      <div class="signature-box" id="signature-container">
-        <!-- INICIO FIRMA REDLINE -->
-        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 650px; font-family: Arial, Helvetica, sans-serif; color: #f5f5f7; border-collapse: collapse; line-height: 1.35; text-align: left; background: #080808;">
+    <div class="generator-grid">
+      <!-- Left Panel: Inputs -->
+      <section class="panel-card">
+        <h2 class="panel-title">Datos Personales</h2>
+        
+        <div class="form-group">
+          <label for="input-name">Nombre Completo</label>
+          <input type="text" id="input-name" class="form-control" value="Eduardo Cayo Vilca" placeholder="Ej. Eduardo Cayo Vilca" />
+        </div>
+
+        <div class="form-group">
+          <label for="input-role">Cargo / Puesto</label>
+          <input type="text" id="input-role" class="form-control" value="Fundador y creador de la marca" placeholder="Ej. Fundador y Director Comercial" />
+        </div>
+
+        <div class="form-group">
+          <label for="input-phone">Teléfono de Contacto</label>
+          <input type="text" id="input-phone" class="form-control" value="+34 600 000 000" placeholder="Ej. +34 600 000 000" />
+        </div>
+
+        <div class="form-group">
+          <label for="input-email">Correo Corporativo</label>
+          <input type="email" id="input-email" class="form-control" value="contacto@redlinestudio.es" placeholder="Ej. contacto@redlinestudio.es" />
+        </div>
+
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="chk-social" checked />
+            Incluir enlaces a redes sociales corporativas
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="chk-disclaimer" checked />
+            Incluir cláusula de confidencialidad y RGPD
+          </label>
+        </div>
+      </section>
+
+      <!-- Right Panel: Preview and Actions -->
+      <section class="panel-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="preview-header">
+            <h2 class="panel-title" style="margin-bottom: 0;">Vista Previa</h2>
+            <div class="preview-mode-toggles">
+              <button class="toggle-btn active" id="btn-bg-light" onclick="setPreviewBg('light')">Claro</button>
+              <button class="toggle-btn" id="btn-bg-dark" onclick="setPreviewBg('dark')">Oscuro</button>
+            </div>
+          </div>
+
+          <!-- Preview Canvas Box -->
+          <div class="preview-canvas light-bg" id="canvas-container">
+            <div id="signature-table-container">
+              <!-- DYNAMIC TABLE INJECTED HERE -->
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="actions-wrap">
+            <button class="btn btn-primary" onclick="copyRichTextSignature()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Firma
+            </button>
+            <button class="btn btn-secondary" onclick="openCodeModal()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Ver Código HTML
+            </button>
+          </div>
+
+          <div class="help-card">
+            <h3>¿Cómo instalarla?</h3>
+            <ol>
+              <li>Rellena los datos en el panel izquierdo (se actualizan en tiempo real).</li>
+              <li>Haz clic en <strong>Copiar Firma</strong> para copiarla con formato enriquecido.</li>
+              <li>Entra en la configuración de firmas de **Outlook, Gmail o Apple Mail**.</li>
+              <li>Crea una firma nueva y pega usando **Cmd + V** (Mac) o **Ctrl + V** (Windows). ¡Listo!</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Toast Toast Notification -->
+  <div class="toast" id="toast-msg">¡Firma copiada con éxito!</div>
+
+  <!-- Code Modal -->
+  <div class="modal-backdrop" id="code-modal" onclick="closeCodeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Código HTML de la firma</h3>
+        <button class="modal-close" onclick="closeCodeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 16px; line-height: 1.4;">
+          Copia el código fuente HTML plano si tu cliente de correo o CRM requiere la inyección de código nativo directo.
+        </p>
+        <textarea class="code-box" id="code-textarea" readonly onclick="this.select()"></textarea>
+        <button class="btn btn-primary" style="margin-top: 16px; width: 100%;" onclick="copyRawCode()">
+          Copiar Código
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Constants
+    const DOM = {
+      name: document.getElementById('input-name'),
+      role: document.getElementById('input-role'),
+      phone: document.getElementById('input-phone'),
+      email: document.getElementById('input-email'),
+      chkSocial: document.getElementById('chk-social'),
+      chkDisclaimer: document.getElementById('chk-disclaimer'),
+      container: document.getElementById('signature-table-container'),
+      canvas: document.getElementById('canvas-container'),
+      btnLight: document.getElementById('btn-bg-light'),
+      btnDark: document.getElementById('btn-bg-dark'),
+      toast: document.getElementById('toast-msg'),
+      modal: document.getElementById('code-modal'),
+      textarea: document.getElementById('code-textarea')
+    };
+
+    // Listeners
+    [DOM.name, DOM.role, DOM.phone, DOM.email].forEach(input => {
+      input.addEventListener('input', renderSignature);
+    });
+    [DOM.chkSocial, DOM.chkDisclaimer].forEach(chk => {
+      chk.addEventListener('change', renderSignature);
+    });
+
+    // Background test toggle
+    function setPreviewBg(mode) {
+      if (mode === 'light') {
+        DOM.canvas.className = 'preview-canvas light-bg';
+        DOM.btnLight.classList.add('active');
+        DOM.btnDark.classList.remove('active');
+      } else {
+        DOM.canvas.className = 'preview-canvas dark-bg';
+        DOM.btnLight.classList.remove('active');
+        DOM.btnDark.classList.add('active');
+      }
+    }
+
+    // Build absolute path for links, ensuring robust URL resolution
+    function getAbsoluteUrl(path) {
+      if (path.startsWith('http')) return path;
+      const base = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      return base + path;
+    }
+
+    // Render HTML Signature inside Table container
+    function renderSignature() {
+      const name = DOM.name.value.trim() || 'Nombre Completo';
+      const role = DOM.role.value.trim() || 'Cargo Corporativo';
+      const phone = DOM.phone.value.trim();
+      const email = DOM.email.value.trim() || 'contacto@redlinestudio.es';
+      
+      const includeSocial = DOM.chkSocial.checked;
+      const includeDisclaimer = DOM.chkDisclaimer.checked;
+
+      // Clean phone number for tel link
+      const phoneClean = phone.replace(/[^+\d]/g, '');
+
+      // Social row HTML (using extremely clean and resilient mini text-links for 100% email compatibility)
+      const socialHTML = includeSocial ? `
+        <tr>
+          <td style="padding: 10px 0 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.8px;">
+            <a href="https://www.linkedin.com/company/redlinestudio-es/" target="_blank" style="color: #ff002b; text-decoration: none; text-transform: uppercase;">LINKEDIN</a>
+            <span style="color: #c4c4c9; margin: 0 6px;">&middot;</span>
+            <a href="https://www.instagram.com/redlinestudio.es/" target="_blank" style="color: #ff002b; text-decoration: none; text-transform: uppercase;">INSTAGRAM</a>
+            <span style="color: #c4c4c9; margin: 0 6px;">&middot;</span>
+            <a href="https://www.facebook.com/redlinestudiocompany" target="_blank" style="color: #ff002b; text-decoration: none; text-transform: uppercase;">FACEBOOK</a>
+          </td>
+        </tr>
+      ` : '';
+
+      // Disclaimer table HTML
+      const disclaimerHTML = includeDisclaimer ? `
+        <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 18px; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; width: 100%; max-width: 580px;">
           <tr>
-            <td valign="middle" style="width: 160px; padding: 22px 24px 22px 24px; text-align: center; line-height: 0;">
-              <a href="https://redlinestudio.es/" target="_blank" style="text-decoration: none; border: 0;">
-                <img src="https://redlinestudio.es/assets/images/logo-email.png" alt="Redline Studio" width="126" style="display: block; width: 126px; max-width: 126px; height: auto; border: 0;" />
-              </a>
-            </td>
-            <td valign="middle" style="width: 3px; padding: 22px 24px 22px 0;">
-              <div style="width: 3px; height: 132px; background: #ff002b; line-height: 132px; font-size: 1px;">&nbsp;</div>
-            </td>
-            <td valign="middle" style="padding: 22px 24px 22px 0; text-align: left;">
-              <div style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 800; color: #f5f5f7; line-height: 1.15; margin: 0 0 4px; letter-spacing: 0;">
-                Eduardo Cayo Vilca
-              </div>
-              <div style="font-size: 13px; color: #ff002b; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; margin: 0 0 12px;">
-                Fundador y creador de la marca
-              </div>
-              <div style="font-size: 13.5px; color: #f5f5f7; margin: 0 0 8px; font-weight: 700;">
-                <a href="mailto:contacto@redlinestudio.es" style="color: #f5f5f7; text-decoration: none;">contacto@redlinestudio.es</a>
-              </div>
-              <div style="font-size: 13.5px; color: #f5f5f7; margin: 0 0 12px; font-weight: 700;">
-                <a href="https://redlinestudio.es/" target="_blank" style="color: #f5f5f7; text-decoration: none;">redlinestudio.es</a>
-              </div>
-              <div style="font-size: 11px; color: #a4a4aa; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.7px;">
-                Desarrollo web corporativo · SEO · SEM<br />
-                Branding · Automatización con IA · Captación comercial
-              </div>
+            <td style="font-size: 9.5px; color: #8d8d92; line-height: 1.45; border-top: 1px solid rgba(0, 0, 0, 0.07); padding-top: 10px; font-family: Arial, Helvetica, sans-serif; text-align: left;">
+              <strong>Cláusula de Confidencialidad:</strong> Este mensaje y sus archivos adjuntos son privados y confidenciales, dirigidos exclusivamente a su destinatario. Si lo ha recibido por error, notifíquelo al remitente y elimínelo. En cumplimiento del RGPD y LOPDGDD, le informamos que sus datos son tratados por REDLINE STUDIO para la gestión y seguimiento de comunicaciones comerciales. Puede ejercer sus derechos de acceso, rectificación, limitación y supresión enviando un correo a <a href="mailto:contacto@redlinestudio.es" style="color: #ff002b; text-decoration: none;">contacto@redlinestudio.es</a>.
             </td>
           </tr>
         </table>
-        <!-- FIN FIRMA REDLINE -->
-      </div>
+      ` : '';
 
-      <div class="toolbar">
-        <p>Haz clic para copiar la firma enriquecida. Luego pégala directamente en la configuración de firmas de tu cliente de correo.</p>
-        <button class="btn-copy" type="button" onclick="copySignature()">Copiar firma</button>
-      </div>
-      <div class="alert" id="alert-msg">Firma copiada. Ya puedes pegarla en Outlook, Gmail o Apple Mail.</div>
-    </section>
+      // Phone segment HTML
+      const phoneHTML = phone ? `
+        <tr>
+          <td style="padding: 0 0 3px 0; font-family: Arial, Helvetica, sans-serif; font-size: 13.5px; color: #55555d;">
+            <strong style="color: #111111;">Tlf:</strong> <a href="tel:${phoneClean}" style="color: #55555d; text-decoration: none; font-weight: 500;">${phone}</a>
+          </td>
+        </tr>
+      ` : '';
 
-    <section class="instructions">
-      <h2>Cómo instalarla</h2>
-      <ol>
-        <li>Haz clic en <strong>Copiar firma</strong>.</li>
-        <li>Abre Outlook, Gmail o Apple Mail y entra en configuración de firmas.</li>
-        <li>Crea una firma nueva y pega con <strong>Cmd + V</strong> o <strong>Ctrl + V</strong>.</li>
-        <li>Guarda y envía un correo de prueba para confirmar que logo, enlaces y espaciados cargan bien.</li>
-      </ol>
-    </section>
-  </main>
+      // Master signature HTML Template (uses local relative logo for accurate rendering in local preview)
+      const signatureHTML = `
+        <table cellpadding="0" cellspacing="0" border="0" style="margin: 0; padding: 0; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; color: #1e1e24; background-color: transparent; text-align: left; line-height: 1.35;">
+          <tr>
+            <!-- Brand Logo Column wrapped in premium dark capsule for contrast -->
+            <td valign="middle" style="background-color: #0c0c0e; border-radius: 12px; padding: 16px 12px; text-align: center; width: 80px;">
+              <a href="https://redlinestudio.es/" target="_blank" style="text-decoration: none; border: 0; outline: none; display: block;">
+                <img src="assets/images/logo.png" alt="Redline Studio Logo" width="70" style="display: block; width: 70px; height: auto; border: 0; margin: 0 auto;" />
+              </a>
+            </td>
+            <!-- Spacer Column -->
+            <td width="20" style="width: 20px;">&nbsp;</td>
+            <!-- Divider vertical left border on details cell for full Outlook engine compatibility -->
+            <td valign="middle" style="border-left: 2px solid #ff002b; padding: 2px 0 2px 24px;">
+              <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 0 0 2px 0; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #111111; line-height: 1.15;">
+                    ${name}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 0 10px 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #ff002b; letter-spacing: 0.8px; text-transform: uppercase;">
+                    ${role}
+                  </td>
+                </tr>
+                ${phoneHTML}
+                <tr>
+                  <td style="padding: 0 0 3px 0; font-family: Arial, Helvetica, sans-serif; font-size: 13.5px; color: #55555d;">
+                    <strong style="color: #111111;">Email:</strong> <a href="mailto:${email}" style="color: #55555d; text-decoration: none; font-weight: 500;">${email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 0 2px 0; font-family: Arial, Helvetica, sans-serif; font-size: 13.5px; color: #55555d;">
+                    <strong style="color: #111111;">Web:</strong> <a href="https://redlinestudio.es/" target="_blank" style="color: #55555d; text-decoration: none; font-weight: 500;">redlinestudio.es</a>
+                  </td>
+                </tr>
+                ${socialHTML}
+              </table>
+            </td>
+          </tr>
+        </table>
+        ${disclaimerHTML}
+      `;
 
-  <script>
-    function copySignature() {
-      const container = document.getElementById('signature-container');
+      DOM.container.innerHTML = signatureHTML.trim();
+      DOM.textarea.value = signatureHTML.trim().replace('src="assets/images/logo.png"', 'src="https://redlinestudio.es/assets/images/logo.png"');
+    }
+
+    // Modern Rich-text Copying to Clipboard with temporary path replacement
+    function copyRichTextSignature() {
+      const element = DOM.container;
+      const logoImg = element.querySelector('img[alt="Redline Studio Logo"]');
+      const originalSrc = logoImg ? logoImg.getAttribute('src') : null;
+
+      // Swap to absolute URL before copying
+      if (logoImg && originalSrc === 'assets/images/logo.png') {
+        logoImg.setAttribute('src', 'https://redlinestudio.es/assets/images/logo.png');
+      }
+
+      const html = element.innerHTML;
+      const plainText = element.innerText;
+
+      const blobHtml = new Blob([html], { type: 'text/html' });
+      const blobText = new Blob([plainText], { type: 'text/plain' });
+
+      const restoreSrc = () => {
+        if (logoImg && originalSrc) {
+          logoImg.setAttribute('src', originalSrc);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.write) {
+        const item = new ClipboardItem({
+          'text/html': blobHtml,
+          'text/plain': blobText
+        });
+        
+        navigator.clipboard.write([item])
+          .then(() => {
+            showToast('¡Firma enriquecida copiada al portapapeles!');
+            restoreSrc();
+          })
+          .catch(err => {
+            console.warn('Modern Clipboard API failed, attempting fallback...', err);
+            fallbackCopy(element);
+            restoreSrc();
+          });
+      } else {
+        fallbackCopy(element);
+        restoreSrc();
+      }
+    }
+
+    function fallbackCopy(element) {
       const range = document.createRange();
       const selection = window.getSelection();
-
-      range.selectNode(container);
+      
+      range.selectNode(element);
       selection.removeAllRanges();
       selection.addRange(range);
 
       try {
-        const copied = document.execCommand('copy');
-        if (copied) {
-          const alertMsg = document.getElementById('alert-msg');
-          alertMsg.style.display = 'block';
-          window.setTimeout(() => {
-            alertMsg.style.display = 'none';
-          }, 3200);
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast('Firma copiada al portapapeles.');
+        } else {
+          throw new Error('Fallback command unsuccessful');
         }
-      } catch (error) {
-        window.alert('Selecciona la firma manualmente y copia con Cmd/Ctrl + C.');
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+        window.alert('No se pudo copiar de forma automática. Por favor, selecciona visualmente la firma y cópiala usando Ctrl+C o Cmd+C.');
       }
-
+      
       selection.removeAllRanges();
     }
+
+    // Modal Control
+    function openCodeModal() {
+      // Swaps relative logo URL to absolute URL in code view textarea
+      DOM.textarea.value = DOM.container.innerHTML.replace('src="assets/images/logo.png"', 'src="https://redlinestudio.es/assets/images/logo.png"');
+      DOM.modal.classList.add('show');
+    }
+
+    function closeCodeModal() {
+      DOM.modal.classList.remove('show');
+    }
+
+    // Copy raw HTML source
+    function copyRawCode() {
+      DOM.textarea.select();
+      try {
+        document.execCommand('copy');
+        closeCodeModal();
+        showToast('Código HTML copiado al portapapeles.');
+      } catch (err) {
+        window.alert('No se pudo copiar el código automáticamente.');
+      }
+    }
+
+    // Toast Control
+    function showToast(msg) {
+      DOM.toast.textContent = msg;
+      DOM.toast.classList.add('show');
+      window.setTimeout(() => {
+        DOM.toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSignature();
+    });
   </script>
 </body>
 </html>
