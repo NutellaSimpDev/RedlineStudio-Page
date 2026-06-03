@@ -37,16 +37,19 @@ body {
   display: none !important;
 }
 
-.no-js .glass-nav,
 .no-js .ui-reveal,
 .no-js .ui-card,
 .no-js .hero-visual,
-.boot-timeout .glass-nav,
 .boot-timeout .ui-reveal,
 .boot-timeout .ui-card,
 .boot-timeout .hero-visual {
   opacity: 1 !important;
   transform: none !important;
+}
+
+.no-js .glass-nav,
+.boot-timeout .glass-nav {
+  opacity: 1 !important;
 }
 
 .sr-only {
@@ -80,20 +83,66 @@ article[id] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-core);
-  transition: opacity 0.4s var(--ease-apple);
+  background: transparent;
+  pointer-events: none;
 }
 
-.boot-screen.is-hidden {
-  opacity: 0;
+.boot-panel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--bg-core);
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+  will-change: transform;
+}
+
+.boot-panel-top {
+  top: 0;
+  transform-origin: top;
+}
+
+.boot-panel-bottom {
+  bottom: 0;
+  transform-origin: bottom;
 }
 
 .boot-line {
-  width: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
   height: 2px;
-  background: var(--led-color);
-  box-shadow: 0 0 20px var(--led-glow);
-  animation: bootLine 0.9s var(--ease-apple) forwards;
+  background: var(--led-red);
+  box-shadow: 0 0 15px var(--led-red);
+  transform: translate(-50%, -50%) scaleX(0);
+  transform-origin: center;
+  will-change: transform;
+  z-index: 10000;
+  animation: bootLineProgress 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bootLineProgress {
+  0% {
+    transform: translate(-50%, -50%) scaleX(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scaleX(0.5);
+  }
+}
+
+.is-loaded .boot-panel-top {
+  transform: translateY(-100%);
+}
+
+.is-loaded .boot-panel-bottom {
+  transform: translateY(100%);
+}
+
+.is-loaded .boot-line {
+  transform: translate(-50%, -50%) scaleX(1) scaleY(0);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
 .cookie-consent {
@@ -214,22 +263,7 @@ article[id] {
   animation: redlineBlink 1.8s steps(1, end) infinite;
 }
 
-@keyframes bootLine {
-  0% {
-    width: 0;
-    opacity: 1;
-  }
-
-  70% {
-    width: 200px;
-    opacity: 1;
-  }
-
-  100% {
-    width: 200px;
-    opacity: 0;
-  }
-}
+/* bootLine keyframes replaced by bootLineProgress */
 
 @keyframes ledPulse {
   0%,
@@ -512,11 +546,11 @@ article[id] {
 
 .hero-section {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(310px, 0.56fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
   gap: clamp(28px, 4vw, 58px);
   align-items: center;
   min-height: 100dvh;
-  padding: 15vh 0;
+  padding: clamp(80px, 12vh, 140px) 0;
 }
 
 .hero-copy {
@@ -934,6 +968,21 @@ article[id] {
 }
 
 .services-page .apple-paragraph {
+  max-width: 600px;
+}
+
+/* Optimización de tamaño en secciones Hero para evitar desbordes y garantizar visibilidad del CTA */
+.hero-section .apple-headline,
+.services-copy .apple-headline {
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-section .apple-paragraph,
+.services-copy .apple-paragraph {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  margin-bottom: 28px;
   max-width: 600px;
 }
 
@@ -1395,7 +1444,10 @@ article[id] {
     display: none !important;
   }
 
-  .glass-nav,
+  .glass-nav {
+    opacity: 1 !important;
+  }
+
   .ui-reveal,
   .ui-card {
     opacity: 1 !important;

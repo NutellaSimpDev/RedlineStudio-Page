@@ -492,12 +492,28 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initBusinessMockup();
 
-  // Run interface initialization immediately for instant load and LCP optimizations
-  initInterface();
-
+  const bootLine = document.getElementById('boot-line');
   const bootElement = document.getElementById('boot');
-  if (bootElement) {
-    bootElement.style.display = 'none';
+
+  if (bootLine && bootElement) {
+    // Force line to scale fully
+    bootLine.style.animation = 'none';
+    void bootLine.offsetWidth;
+    bootLine.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    bootLine.style.transform = 'translate(-50%, -50%) scaleX(1)';
+
+    window.setTimeout(() => {
+      document.documentElement.classList.add('is-loaded');
+      clearBootTimeout();
+      initInterface();
+
+      window.setTimeout(() => {
+        bootElement.style.display = 'none';
+      }, 600);
+    }, 300);
+  } else {
+    document.documentElement.classList.add('is-loaded');
+    clearBootTimeout();
+    initInterface();
   }
-  clearBootTimeout();
 });
