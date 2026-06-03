@@ -99,11 +99,11 @@
     <section class="viewport-section is-compact-hero">
       <div class="services-copy">
         <h1 class="apple-headline ui-reveal">
-          SOLUCIONES DIGITALES.<br>
-          <span>CRECIMIENTO MEDIBLE.</span>
+          Servicios de Crecimiento<br>
+          <span>Digital para Empresas.</span>
         </h1>
         <p class="apple-paragraph ui-reveal">
-          Estructuramos ecosistemas de desarrollo web, SEO, SEM, branding e IA para empresas que quieren convertir presencia digital en demanda real.
+          Diseño de páginas web de alta conversión, posicionamiento en buscadores (SEO) y automatización comercial para optimizar la captación de oportunidades B2B.
         </p>
         <div class="ui-reveal">
           <a href="#contacto" class="action-trigger">Solicitar evaluación inicial</a>
@@ -197,29 +197,43 @@
 
     <section class="viewport-section is-auto-height">
       <div id="contacto" class="glass-panel ui-card full-width contact-panel">
-        <span class="panel-tag">[ EVALUACIÓN INICIAL ]</span>
-        <h2 class="apple-headline contact-title">CONTACTO.</h2>
-        <p class="contact-intro">Cuéntanos qué servicio quieres mejorar y te respondemos con una evaluación inicial en menos de 24 horas hábiles.</p>
+        <span class="panel-tag">[ AUDITORÍA DE CRECIMIENTO ]</span>
+        <h2 class="apple-headline contact-title">Diseñemos tu estrategia de captación</h2>
+        <p class="contact-intro">Analizamos tu web actual y tu posicionamiento en Google sin compromiso. Te enviamos un plan de mejora en 24h laborables.</p>
         <form action="https://api.web3forms.com/submit" method="POST" data-form-name="contact_services">
           <input type="hidden" name="access_key" value="ddf395ca-bd76-4b7d-8581-604357cbf7b0" />
           <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO - Servicios" />
           <input type="hidden" name="source_page" value="services" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <label class="sr-only" for="service-lead-name">Nombre o razón social</label>
-          <input id="service-lead-name" class="form-control" name="Identificador" type="text" autocomplete="organization" placeholder="Tu nombre o razón social" required />
+          <label class="sr-only" for="service-lead-name">Tu nombre y empresa</label>
+          <input id="service-lead-name" class="form-control" name="Nombre_Empresa" type="text" autocomplete="organization" placeholder="Tu nombre y empresa" required />
 
-          <label class="sr-only" for="service-lead-need">Qué necesitas mejorar</label>
-          <input id="service-lead-need" class="form-control" name="Necesidad" type="text" autocomplete="off" placeholder="Web / SEO / Publicidad / Branding / IA" required />
+          <label class="sr-only" for="service-lead-need">¿En qué área necesitas crecer?</label>
+          <select id="service-lead-need" class="form-control" name="Servicio_Interes" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
+            <option value="" disabled selected>¿En qué área necesitas crecer?</option>
+            <option value="desarrollo-web">Desarrollo Web Corporativo</option>
+            <option value="seo">Posicionamiento en Google (SEO)</option>
+            <option value="leads-ads">Generación de Leads B2B (SEM/Ads)</option>
+            <option value="branding">Branding y Rediseño de Marca</option>
+            <option value="automatizacion-ia">Automatización e IA</option>
+          </select>
 
-          <label class="sr-only" for="service-lead-objective">Objetivo del proyecto</label>
-          <input id="service-lead-objective" class="form-control" name="Objetivo" type="text" autocomplete="off" placeholder="Objetivo comercial del proyecto" required />
+          <label class="sr-only" for="service-lead-email">Correo corporativo</label>
+          <input id="service-lead-email" class="form-control" name="Email" type="email" autocomplete="email" placeholder="Correo corporativo" required />
 
-          <label class="sr-only" for="service-lead-contact">Correo corporativo o teléfono</label>
-          <input id="service-lead-contact" class="form-control" name="Comunicacion" type="text" inputmode="email" autocomplete="email" placeholder="Correo corporativo / teléfono" data-contact-field required />
+          <label class="sr-only" for="service-lead-phone">Teléfono de contacto</label>
+          <input id="service-lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Teléfono de contacto" required />
 
-          <button type="submit" class="action-trigger full-width">Agendar evaluación de crecimiento</button>
-          <p class="form-note" role="status" aria-live="polite" data-default-message="Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.">Respondemos en menos de 24 horas hábiles con una ruta inicial de mejora.</p>
+          <div class="rgpd-container" style="display: flex; gap: 10px; align-items: flex-start; margin: 15px 0 20px; font-size: 0.85rem; color: #86868b; text-align: left; line-height: 1.4;">
+            <input type="checkbox" id="service-lead-privacy" name="Aceptacion_Privacidad" style="margin-top: 3px; accent-color: #ff002b;" required />
+            <label for="service-lead-privacy">
+              Acepto que traten mis datos para enviarme la propuesta. <a href="privacidad.html" target="_blank" style="color: #ff002b; text-decoration: none;">Ver política de privacidad</a>.
+            </label>
+          </div>
+
+          <button type="submit" class="action-trigger full-width">Solicitar diagnóstico y plan de acción</button>
+          <p class="form-note" role="status" aria-live="polite" data-default-message="Analizamos tu web actual y te enviamos un plan de mejora en 24h laborables sin compromiso.">Analizamos tu web actual y te enviamos un plan de mejora en 24h laborables sin compromiso.</p>
         </form>
       </div>
     </section>
