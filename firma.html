@@ -460,7 +460,7 @@
 <body>
   <div class="container">
     <header>
-      <img class="brand-logo" src="assets/images/logo.png" alt="Redline Studio" />
+      <img class="brand-logo" src="https://redlinestudio.es/assets/images/logo.png" alt="Redline Studio" />
       <h1>Firma de correo <span>Redline.</span></h1>
       <p class="subtitle">
         Generador de firmas corporativas optimizado para Outlook Desktop (Word Engine), Gmail y Apple Mail. Sin fondos negros estáticos para una total compatibilidad con el modo oscuro.
@@ -670,7 +670,7 @@
             <!-- Brand Logo Column wrapped in premium dark capsule for contrast -->
             <td valign="middle" style="background-color: #0c0c0e; border-radius: 12px; padding: 16px 12px; text-align: center; width: 80px;">
               <a href="https://redlinestudio.es/" target="_blank" style="text-decoration: none; border: 0; outline: none; display: block;">
-                <img src="assets/images/logo.png" alt="Redline Studio Logo" width="70" style="display: block; width: 70px; height: auto; border: 0; margin: 0 auto;" />
+                <img src="https://redlinestudio.es/assets/images/logo.png" alt="Redline Studio Logo" width="70" style="display: block; width: 70px; height: auto; border: 0; margin: 0 auto;" />
               </a>
             </td>
             <!-- Spacer Column -->
@@ -708,31 +708,17 @@
       `;
 
       DOM.container.innerHTML = signatureHTML.trim();
-      DOM.textarea.value = signatureHTML.trim().replace('src="assets/images/logo.png"', 'src="https://redlinestudio.es/assets/images/logo.png"');
+      DOM.textarea.value = signatureHTML.trim();
     }
 
-    // Modern Rich-text Copying to Clipboard with temporary path replacement
+    // Modern Rich-text Copying to Clipboard
     function copyRichTextSignature() {
       const element = DOM.container;
-      const logoImg = element.querySelector('img[alt="Redline Studio Logo"]');
-      const originalSrc = logoImg ? logoImg.getAttribute('src') : null;
-
-      // Swap to absolute URL before copying
-      if (logoImg && originalSrc === 'assets/images/logo.png') {
-        logoImg.setAttribute('src', 'https://redlinestudio.es/assets/images/logo.png');
-      }
-
       const html = element.innerHTML;
       const plainText = element.innerText;
 
       const blobHtml = new Blob([html], { type: 'text/html' });
       const blobText = new Blob([plainText], { type: 'text/plain' });
-
-      const restoreSrc = () => {
-        if (logoImg && originalSrc) {
-          logoImg.setAttribute('src', originalSrc);
-        }
-      };
 
       if (navigator.clipboard && navigator.clipboard.write) {
         const item = new ClipboardItem({
@@ -743,16 +729,13 @@
         navigator.clipboard.write([item])
           .then(() => {
             showToast('¡Firma enriquecida copiada al portapapeles!');
-            restoreSrc();
           })
           .catch(err => {
             console.warn('Modern Clipboard API failed, attempting fallback...', err);
             fallbackCopy(element);
-            restoreSrc();
           });
       } else {
         fallbackCopy(element);
-        restoreSrc();
       }
     }
 
@@ -781,8 +764,7 @@
 
     // Modal Control
     function openCodeModal() {
-      // Swaps relative logo URL to absolute URL in code view textarea
-      DOM.textarea.value = DOM.container.innerHTML.replace('src="assets/images/logo.png"', 'src="https://redlinestudio.es/assets/images/logo.png"');
+      DOM.textarea.value = DOM.container.innerHTML;
       DOM.modal.classList.add('show');
     }
 
