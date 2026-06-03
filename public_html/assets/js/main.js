@@ -485,10 +485,41 @@ function initInterface() {
   }, { passive: true });
 }
 
+function initLangDropdown() {
+  const dropdown = document.querySelector('.lang-dropdown');
+  if (!dropdown) return;
+
+  const trigger = dropdown.querySelector('.lang-dropdown-trigger');
+  if (!trigger) return;
+
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isActive = dropdown.classList.toggle('is-active');
+    trigger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove('is-active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close when hitting Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      dropdown.classList.remove('is-active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
   initAnalyticsEvents();
   initMenu();
+  initLangDropdown();
   initBusinessMockup();
 
   const bootLine = document.getElementById('boot-line');
