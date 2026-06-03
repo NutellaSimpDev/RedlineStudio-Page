@@ -419,6 +419,48 @@ article[id] {
   color: var(--text-solid);
 }
 
+.lang-separator {
+  color: rgba(255, 255, 255, 0.15);
+  margin: 0 4px;
+  user-select: none;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 12px;
+}
+
+.lang-link {
+  color: var(--text-muted) !important;
+  transition: color 0.3s;
+}
+
+.lang-link:hover,
+.lang-link.active {
+  color: var(--text-solid) !important;
+}
+
+.m-lang-switcher {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.m-lang-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.m-lang-link:hover,
+.m-lang-link.active {
+  color: var(--text-solid);
+}
+
 .menu-toggle {
   z-index: 1001;
   display: none;

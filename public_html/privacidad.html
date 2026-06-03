@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>¡Solicitud Recibida! | Redline Studio</title>
-  <meta name="description" content="Tu solicitud ha sido enviada con éxito. Reserva tu sesión de diagnóstico gratuita en nuestro calendario." />
+  <title>Política de Privacidad | Redline Studio</title>
+  <meta name="description" content="Política de privacidad de Redline Studio. Información sobre el tratamiento de tus datos personales conforme al RGPD y la LOPDGDD." />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#020202" />
+  <link rel="canonical" href="https://redlinestudio.es/privacidad.html" />
+
+  <link rel="alternate" hreflang="es" href="https://redlinestudio.es/privacidad.html" />
+  <link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/privacidad.html" />
+  <link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/privacidad.html" />
+  <link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/privacidad.html" />
 
   <script>
     document.documentElement.classList.remove('no-js');
@@ -28,78 +34,53 @@
 
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    .thank-you-content {
+    .legal-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 40px 0;
     }
-    .thank-you-card {
+    .legal-card {
       background: rgba(12, 12, 14, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       padding: 48px;
       backdrop-filter: blur(20px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      text-align: center;
     }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #ff002b;
-      margin-bottom: 24px;
-      padding: 6px 14px;
-      border: 1px solid rgba(255, 0, 43, 0.2);
-      border-radius: 100px;
-      background: rgba(255, 0, 43, 0.05);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .thank-you-card h2 {
+    .legal-card h2 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #ffffff;
-      margin-top: 24px;
+      margin-top: 32px;
       margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 0, 43, 0.2);
+      padding-bottom: 8px;
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
-    .thank-you-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #86868b;
-      margin-bottom: 32px;
+    .legal-card h2:first-of-type {
+      margin-top: 0;
     }
-    .scheduler-container {
-      margin: 32px 0;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(13, 13, 15, 0.8);
-      min-height: 780px;
-    }
-    .back-home-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
+    .legal-card p, .legal-card ul {
       font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: #ff002b;
-      border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      margin-top: 16px;
-      box-shadow: 0 4px 20px rgba(255, 0, 43, 0.3);
+      line-height: 1.7;
+      color: #86868b;
+      margin-bottom: 20px;
     }
-    .back-home-btn:hover {
-      background: #e60027;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 0, 43, 0.45);
+    .legal-card ul {
+      padding-left: 20px;
+    }
+    .legal-card li {
+      margin-bottom: 8px;
+    }
+    .legal-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--led-red);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -118,6 +99,13 @@
       <a href="index.html" class="m-link"><span>// 01</span>Inicio</a>
       <a href="services.html" class="m-link"><span>// 02</span>Servicios</a>
       <a href="index.html#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
+      <div class="m-lang-switcher">
+        <a href="privacidad.html" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <a href="en/privacidad.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <a href="de/privacidad.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+      </div>
     </div>
   </div>
 
@@ -142,6 +130,12 @@
       <a href="index.html">Inicio</a>
       <a href="services.html">Servicios</a>
       <a href="index.html#contacto">Contacto</a>
+      <span class="lang-separator">|</span>
+      <div class="lang-switcher">
+        <a href="privacidad.html" class="lang-link active" data-lang="es" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <a href="en/privacidad.html" class="lang-link" data-lang="en" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <a href="de/privacidad.html" class="lang-link" data-lang="de" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+      </div>
     </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
       <span></span>
@@ -150,28 +144,60 @@
   </nav>
 
   <main class="layout-wrapper" style="padding-top: 160px; min-height: 80vh;">
-    <section class="thank-you-content">
-      <div class="thank-you-card ui-card">
-        <div class="status-badge">// ¡SOLICITUD ENVIADA CON ÉXITO!</div>
-        <h1 class="apple-headline" style="font-size: 2.8rem; margin-bottom: 12px; line-height: 1.1;">TU AUDITORÍA B2B ESTÁ EN MARCHA.</h1>
+    <section class="legal-content">
+      <div class="legal-card ui-card">
+        <h1 class="apple-headline" style="font-size: 2.5rem; margin-bottom: 8px;">POLÍTICA DE PRIVACIDAD.</h1>
+        <div class="legal-meta">// ÚLTIMA ACTUALIZACIÓN: JUNIO 2026</div>
 
-        <h2>Próximo Paso: Elige fecha para tu Diagnóstico Gratuito</h2>
+        <h2>1. RESPONSABLE DEL TRATAMIENTO</h2>
         <p>
-          Hemos recibido tus datos correctamente y nuestro equipo ya está analizando tu web. Para personalizar al máximo el diagnóstico, por favor <strong>selecciona un día y hora</strong> en el calendario de abajo para realizar una videollamada de 15 minutos en la que te presentaremos los resultados del análisis.
+          De conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos que los datos recabados a través de esta web son responsabilidad de:
+        </p>
+        <ul>
+          <li><strong>Razón Social:</strong> REDLINE STUDIO</li>
+          <li><strong>Email de contacto:</strong> <a href="mailto:contacto@redlinestudio.es" style="color: var(--led-red); text-decoration: none;">contacto@redlinestudio.es</a></li>
+          <li><strong>Sitio Web:</strong> <a href="https://redlinestudio.es/" target="_blank" style="color: var(--led-red); text-decoration: none;">redlinestudio.es</a></li>
+        </ul>
+
+        <h2>2. FINALIDAD DEL TRATAMIENTO DE DATOS</h2>
+        <p>
+          Tratamos los datos de carácter personal que nos facilitan los interesados para las siguientes finalidades:
+        </p>
+        <ul>
+          <li>Gestionar las consultas, solicitudes de información o presupuestos remitidos a través de nuestros formularios de contacto.</li>
+          <li>Llevar a cabo la auditoría técnica y comercial gratuita solicitada por el usuario.</li>
+          <li>Remitir comunicaciones comerciales relacionadas con nuestros servicios digitales de desarrollo web, posicionamiento SEO, campañas SEM y automatización con IA, siempre que contemos con su consentimiento expreso.</li>
+        </ul>
+
+        <h2>3. LEGITIMACIÓN DEL TRATAMIENTO</h2>
+        <p>
+          La base legal para el tratamiento de sus datos es el <strong>consentimiento del interesado</strong>. Al marcar la casilla de aceptación en nuestros formularios y remitir la información, el usuario consiente de forma expresa que REDLINE STUDIO procese sus datos para dar respuesta a su solicitud.
         </p>
 
-        <!-- Calendly inline widget begin -->
-        <div class="scheduler-container" style="min-height: 780px;">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/redlinestudiocorp/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=020202&text_color=ffffff&primary_color=ff002b" style="min-width:320px;height:780px;"></div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
-        <!-- Calendly inline widget end -->
-
-        <p style="margin-top: 24px; font-size: 0.9rem;">
-          ¿No tienes tu agenda a mano? No te preocupes. Te hemos enviado un email con el enlace para reservar en otro momento.
+        <h2>4. PLAZO DE CONSERVACIÓN DE LOS DATOS</h2>
+        <p>
+          Los datos personales facilitados se conservarán durante el tiempo necesario para cumplir con la finalidad para la que se recabaron y para determinar las posibles responsabilidades que se pudieran derivar de dicha finalidad y del tratamiento de los datos.
         </p>
 
-        <a href="index.html" class="back-home-btn">← Volver al Inicio</a>
+        <h2>5. DESTINATARIOS DE LOS DATOS</h2>
+        <p>
+          REDLINE STUDIO no cederá sus datos personales a terceros, salvo obligación legal expresa o cuando sea estrictamente necesario para la prestación del servicio solicitado (por ejemplo, proveedores de infraestructura de servidores o servicios analíticos en cumplimiento del RGPD).
+        </p>
+
+        <h2>6. DERECHOS DEL INTERESADO</h2>
+        <p>
+          Tiene derecho a obtener confirmación sobre si estamos tratando sus datos personales. Puede ejercer sus derechos de:
+        </p>
+        <ul>
+          <li><strong>Acceso:</strong> Derecho a conocer qué datos suyos estamos tratando.</li>
+          <li><strong>Rectificación:</strong> Derecho a corregir datos inexactos o incompletos.</li>
+          <li><strong>Supresión (Derecho al olvido):</strong> Derecho a solicitar la eliminación de sus datos cuando ya no sean necesarios.</li>
+          <li><strong>Limitación del tratamiento:</strong> Derecho a solicitar la suspensión temporal del tratamiento de sus datos.</li>
+          <li><strong>Oposición:</strong> Derecho a oponerse al tratamiento de sus datos para fines específicos.</li>
+        </ul>
+        <p>
+          Para ejercer estos derechos, puede dirigir una comunicación por escrito acompañada de una copia de su documento de identidad al correo electrónico: <a href="mailto:contacto@redlinestudio.es" style="color: var(--led-red); text-decoration: none;">contacto@redlinestudio.es</a>.
+        </p>
       </div>
     </section>
   </main>

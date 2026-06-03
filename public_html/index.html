@@ -11,6 +11,32 @@
   <meta name="theme-color" content="#020202" />
   <link rel="canonical" href="https://redlinestudio.es/" />
 
+  <link rel="alternate" hreflang="es" href="https://redlinestudio.es/" />
+  <link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/" />
+  <link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/" />
+
+  <script>
+    (function() {
+      var path = window.location.pathname;
+      if (path === '/' || path === '/index.html' || path.endsWith('/')) {
+        var preferredLang = localStorage.getItem('redline_lang_preferred');
+        if (!preferredLang) {
+          var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+          if (userLang.startsWith('de')) {
+            window.location.replace('de/index.html');
+          } else if (userLang.startsWith('en')) {
+            window.location.replace('en/index.html');
+          }
+        } else if (preferredLang === 'de') {
+          window.location.replace('de/index.html');
+        } else if (preferredLang === 'en') {
+          window.location.replace('en/index.html');
+        }
+      }
+    })();
+  </script>
+
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Redline Studio" />
@@ -108,6 +134,13 @@
       <a href="index.html" class="m-link active"><span>// 01</span>Inicio</a>
       <a href="services.html" class="m-link"><span>// 02</span>Servicios</a>
       <a href="#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
+      <div class="m-lang-switcher">
+        <a href="index.html" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <a href="en/index.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <a href="de/index.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+      </div>
     </div>
   </div>
 
@@ -132,6 +165,12 @@
       <a href="index.html" class="active">Inicio</a>
       <a href="services.html">Servicios</a>
       <a href="#contacto">Contacto</a>
+      <span class="lang-separator">|</span>
+      <div class="lang-switcher">
+        <a href="index.html" class="lang-link active" data-lang="es" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <a href="en/index.html" class="lang-link" data-lang="en" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <a href="de/index.html" class="lang-link" data-lang="de" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+      </div>
     </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
       <span></span>
