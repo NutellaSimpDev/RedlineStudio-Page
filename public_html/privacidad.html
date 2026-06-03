@@ -96,14 +96,14 @@
   </div>
   <div class="mobile-menu-overlay" id="menu-movil">
     <div class="mobile-links-container">
-      <a href="index.html" class="m-link"><span>// 01</span>Inicio</a>
+      <a href="./" class="m-link"><span>// 01</span>Inicio</a>
       <a href="services.html" class="m-link"><span>// 02</span>Servicios</a>
-      <a href="index.html#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
-      <div class="m-lang-switcher">
+      <a href="./#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
+      <div class="m-lang-switcher" aria-label="Seleccionar idioma" role="navigation">
         <a href="privacidad.html" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
-        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <span class="lang-separator-dot" aria-hidden="true">•</span>
         <a href="en/privacidad.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
-        <span style="color: rgba(255,255,255,0.15)">|</span>
+        <span class="lang-separator-dot" aria-hidden="true">•</span>
         <a href="de/privacidad.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
       </div>
     </div>
@@ -123,17 +123,23 @@
   </div>
 
   <nav class="glass-nav" id="nav">
-    <a href="index.html" class="brand-mark">
+    <a href="./" class="brand-mark">
       <img src="assets/images/logo.svg" alt="REDLINE STUDIO" class="nav-logo" width="72" height="72" />
     </a>
     <div class="nav-links">
-      <a href="index.html">Inicio</a>
+      <a href="./">Inicio</a>
       <a href="services.html">Servicios</a>
-      <a href="index.html#contacto">Contacto</a>
-      <span class="lang-separator">|</span>
-      <div class="lang-switcher">
-        <a href="privacidad.html" class="lang-link active" data-lang="es" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+      <a href="./#contacto">Contacto</a>
+      <div class="lang-switcher" aria-label="Seleccionar idioma" role="navigation">
+        <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <a href="privacidad.html" class="lang-link active" data-lang="es" aria-current="true" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <span class="lang-separator-dot" aria-hidden="true">•</span>
         <a href="en/privacidad.html" class="lang-link" data-lang="en" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <span class="lang-separator-dot" aria-hidden="true">•</span>
         <a href="de/privacidad.html" class="lang-link" data-lang="de" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
       </div>
     </div>
