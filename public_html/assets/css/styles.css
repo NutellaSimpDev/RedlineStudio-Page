@@ -1173,7 +1173,7 @@ article[id] {
 .glass-panel {
   display: flex;
   flex-direction: column;
-  padding: 48px;
+  padding: clamp(24px, 3.5vw, 40px);
 }
 
 .glass-panel-large {
@@ -1208,9 +1208,36 @@ article[id] {
 .glass-panel h3 {
   margin-bottom: 16px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+/* Custom Bento Card SVG Visual Styles */
+.card-visual {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  opacity: 0.75;
+  transition: transform 0.4s var(--ease-apple), opacity 0.4s var(--ease-apple);
+}
+
+.service-svg {
+  width: 90px;
+  height: 90px;
+  transition: filter 0.4s var(--ease-apple);
+}
+
+.glass-panel:hover .card-visual {
+  transform: scale(1.06) translateY(-4px);
+  opacity: 1;
+}
+
+.glass-panel:hover .service-svg {
+  filter: drop-shadow(0 0 10px rgba(255, 0, 43, 0.35));
 }
 
 .glass-panel p {
