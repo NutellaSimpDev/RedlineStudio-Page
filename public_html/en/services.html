@@ -120,11 +120,11 @@
       <a href="services.html" class="m-link active"><span>// 02</span>Services</a>
       <a href="#contacto" class="m-link toggle-close"><span>// 03</span>Contact</a>
       <div class="m-lang-switcher" aria-label="Select language" role="navigation">
-        <a href="../services.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
+        <a href="../services.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a>
         <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="services.html" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
+        <a href="services.html" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a>
         <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="../de/services.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+        <a href="../de/services.html" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a>
       </div>
     </div>
   </div>
@@ -150,17 +150,23 @@
       <a href="./">Home</a>
       <a href="services.html" class="active">Services</a>
       <a href="#contacto">Contact</a>
-      <div class="lang-switcher" aria-label="Select language" role="navigation">
-        <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <a href="../services.html" class="lang-link" data-lang="es" onclick="localStorage.setItem('redline_lang_preferred', 'es')">ES</a>
-        <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="services.html" class="lang-link active" data-lang="en" aria-current="true" onclick="localStorage.setItem('redline_lang_preferred', 'en')">EN</a>
-        <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="../de/services.html" class="lang-link" data-lang="de" onclick="localStorage.setItem('redline_lang_preferred', 'de')">DE</a>
+      <div class="lang-dropdown" aria-label="Select language" role="navigation">
+        <button class="lang-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="current-lang-text">English</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="lang-dropdown-menu" role="menu">
+          <li role="none"><a href="../services.html" class="lang-dropdown-item" data-lang="es" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a></li>
+          <li role="none"><a href="services.html" class="lang-dropdown-item active" data-lang="en" role="menuitem" aria-current="true" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a></li>
+          <li role="none"><a href="../de/services.html" class="lang-dropdown-item" data-lang="de" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a></li>
+        </ul>
       </div>
     </div>
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-movil">
