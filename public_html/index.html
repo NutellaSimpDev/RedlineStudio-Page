@@ -19,7 +19,7 @@
   <script>
     (function() {
       var path = window.location.pathname;
-      if (path === '/' || path === '/index.html' || path.endsWith('/')) {
+      if (path === '/' || path === '/index.html' || path === '/index' || path.endsWith('/')) {
         var preferredLang = localStorage.getItem('redline_lang_preferred');
         if (!preferredLang) {
           var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
@@ -132,7 +132,7 @@
   <div class="mobile-menu-overlay" id="menu-movil">
     <div class="mobile-links-container">
       <a href="./" class="m-link active"><span>// 01</span>Inicio</a>
-      <a href="services.html" class="m-link"><span>// 02</span>Servicios</a>
+      <a href="services" class="m-link"><span>// 02</span>Servicios</a>
       <a href="#contacto" class="m-link toggle-close"><span>// 03</span>Contacto</a>
       <div class="m-lang-switcher" aria-label="Seleccionar idioma" role="navigation">
         <a href="./" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a>
@@ -163,7 +163,7 @@
     </a>
     <div class="nav-links">
       <a href="./" class="active">Inicio</a>
-      <a href="services.html">Servicios</a>
+      <a href="services">Servicios</a>
       <a href="#contacto">Contacto</a>
       <div class="lang-dropdown" aria-label="Seleccionar idioma" role="navigation">
         <button class="lang-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
@@ -294,7 +294,7 @@
           <span class="panel-tag">[ 01 / DESARROLLO WEB ]</span>
           <h3>Desarrollo web corporativo</h3>
           <p>Desarrollamos sitios web rápidos, premium y escalables orientados a la conversión. Diseños a medida para transmitir autoridad e impulsar tu negocio.</p>
-          <a href="services.html#web" class="learn-more-link">Ver detalles ↗</a>
+          <a href="services#web" class="learn-more-link">Ver detalles ↗</a>
         </article>
 
         <article class="glass-panel ui-card span-3">
@@ -309,7 +309,7 @@
           <span class="panel-tag">[ 02 / IDENTIDAD & MARCA ]</span>
           <h3>Branding corporativo</h3>
           <p>Diseñamos identidades visuales coherentes para elevar la percepción de valor de tu empresa y diferenciar tu propuesta frente a tus competidores.</p>
-          <a href="services.html#branding" class="learn-more-link">Ver detalles ↗</a>
+          <a href="services#branding" class="learn-more-link">Ver detalles ↗</a>
         </article>
 
         <article class="glass-panel ui-card span-2">
@@ -327,7 +327,7 @@
           <span class="panel-tag">[ 03 / CAPTACIÓN & GROWTH ]</span>
           <h3>Captación de leads para empresas</h3>
           <p>Creamos embudos de ventas B2B y sistemas de generación de leads cualificados diseñados para conseguir reuniones con decisores de compra.</p>
-          <a href="services.html#growth" class="learn-more-link">Ver detalles ↗</a>
+          <a href="services#growth" class="learn-more-link">Ver detalles ↗</a>
         </article>
 
         <article class="glass-panel ui-card span-2">
@@ -343,7 +343,7 @@
           <span class="panel-tag">[ 04 / SEO & SEM ]</span>
           <h3>Agencia SEO B2B y Campañas SEM</h3>
           <p>Especialistas en consultoría SEO B2B on-page, contenidos estratégicos y campañas pagadas en Google Ads y LinkedIn Ads con retorno de inversión.</p>
-          <a href="services.html#seo" class="learn-more-link">Ver detalles ↗</a>
+          <a href="services#seo" class="learn-more-link">Ver detalles ↗</a>
         </article>
 
         <article class="glass-panel ui-card span-2">
@@ -367,7 +367,7 @@
           <span class="panel-tag">[ 05 / AUTOMATIZACIÓN IA ]</span>
           <h3>Automatización de ventas con IA</h3>
           <p>Integramos inteligencia artificial para la calificación de prospectos, respuestas automáticas y optimización de tus procesos comerciales.</p>
-          <a href="services.html#ia" class="learn-more-link">Ver detalles ↗</a>
+          <a href="services#ia" class="learn-more-link">Ver detalles ↗</a>
         </article>
       </div>
     </section>
@@ -407,7 +407,7 @@
           <div class="rgpd-container" style="display: flex; gap: 10px; align-items: flex-start; margin: 15px 0 20px; font-size: 0.85rem; color: #86868b; text-align: left; line-height: 1.4;">
             <input type="checkbox" id="lead-privacy" name="Aceptacion_Privacidad" style="margin-top: 3px; accent-color: #ff002b;" required />
             <label for="lead-privacy">
-              Acepto que traten mis datos para enviarme la propuesta. <a href="privacidad.html" target="_blank" style="color: #ff002b; text-decoration: none;">Ver política de privacidad</a>.
+              Acepto que traten mis datos para enviarme la propuesta. <a href="privacidad" target="_blank" style="color: #ff002b; text-decoration: none;">Ver política de privacidad</a>.
             </label>
           </div>
 

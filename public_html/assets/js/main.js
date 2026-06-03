@@ -87,7 +87,7 @@ function initCookieConsent() {
 }
 
 function initAnalyticsEvents() {
-  document.querySelectorAll('a[href="#contacto"], a[href="index.html#contacto"]').forEach((link) => {
+  document.querySelectorAll('a[href="#contacto"], a[href="#contact"], a[href="#kontakt"]').forEach((link) => {
     link.addEventListener('click', () => {
       trackEvent('cta_contact_click', {
         cta_text: link.textContent.trim(),
@@ -96,7 +96,7 @@ function initAnalyticsEvents() {
     });
   });
 
-  document.querySelectorAll('a[href^="services.html#"]').forEach((link) => {
+  document.querySelectorAll('a[href^="services.html#"], a[href^="services#"]').forEach((link) => {
     link.addEventListener('click', () => {
       trackEvent('service_detail_click', {
         cta_text: link.textContent.trim(),
@@ -124,7 +124,7 @@ function initAnalyticsEvents() {
   document.querySelectorAll('.nav-links a, .m-link').forEach((link) => {
     link.addEventListener('click', () => {
       const href = link.getAttribute('href');
-      if (href === '#contacto' || href === 'index.html#contacto') return;
+      if (href === '#contacto' || href === '#contact' || href === '#kontakt' || href.startsWith('#')) return;
 
       trackEvent('nav_click', {
         cta_text: link.textContent.trim(),
@@ -214,7 +214,7 @@ async function handleLeadSubmit(event, form) {
     form.reset();
     setFormMessage(form, 'Solicitud enviada. Redirigiendo...', 'success');
     window.setTimeout(() => {
-      window.location.href = 'gracias.html';
+      window.location.href = 'gracias';
     }, 400);
   } catch (error) {
     console.warn('Web3Forms AJAX failed, falling back to native submit.', error);
