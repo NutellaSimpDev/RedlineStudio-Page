@@ -4,7 +4,7 @@
   --text-muted: #86868b;
   --glass-bg: rgba(12, 12, 14, 0.15);
   --glass-border: rgba(255, 255, 255, 0.15);
-  --glass-blur: blur(60px);
+  --glass-blur: blur(16px);
   --led-color: #ffffff;
   --led-glow: rgba(255, 255, 255, 0.85);
   --led-red: #ff002b;
@@ -156,6 +156,8 @@ article[id] {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .glyph-svg {
@@ -173,8 +175,8 @@ article[id] {
   stroke-linecap: round;
   stroke-linejoin: round;
   opacity: 0.05;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.2));
-  transform: translateZ(0);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+  transform: translate3d(0, 0, 0);
   will-change: opacity;
 }
 
@@ -199,16 +201,16 @@ article[id] {
   stroke-width: 18;
   stroke-linecap: round;
   opacity: 0.15;
-  filter: drop-shadow(0 0 25px var(--led-red)) drop-shadow(0 0 40px rgba(255, 0, 43, 0.5));
-  transform: translateZ(0);
+  filter: drop-shadow(0 0 25px rgba(255, 0, 43, 0.5));
+  transform: translate3d(0, 0, 0);
   will-change: opacity;
   animation: redlineBeat 2.4s ease-in-out infinite;
 }
 
 .led-strobe-red {
   stroke: var(--led-red) !important;
-  filter: drop-shadow(0 0 20px var(--led-red)) !important;
-  transform: translateZ(0);
+  filter: drop-shadow(0 0 15px rgba(255, 0, 43, 0.6)) !important;
+  transform: translate3d(0, 0, 0);
   animation: redlineBlink 1.8s steps(1, end) infinite;
 }
 

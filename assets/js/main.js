@@ -492,18 +492,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initBusinessMockup();
 
-  window.setTimeout(() => {
-    const bootElement = document.getElementById('boot');
-    if (!bootElement) {
-      initInterface();
-      return;
-    }
+  // Run interface initialization immediately for instant load and LCP optimizations
+  initInterface();
 
-    bootElement.classList.add('is-hidden');
-    window.setTimeout(() => {
-      bootElement.style.display = 'none';
-      clearBootTimeout();
-      initInterface();
-    }, 420);
-  }, 900);
+  const bootElement = document.getElementById('boot');
+  if (bootElement) {
+    bootElement.style.display = 'none';
+  }
+  clearBootTimeout();
 });
