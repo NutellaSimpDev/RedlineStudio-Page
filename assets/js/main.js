@@ -286,13 +286,22 @@ function initMenu() {
 function countMockMetric(element, target, duration = 1200, decimals = 0) {
   if (!element) return;
 
-  let current = 0;
-  const step = target / (duration / 16);
-  const timer = window.setInterval(() => {
-    current = Math.min(current + step, target);
+  let startTime = null;
+
+  function update(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const current = progress * target;
+
     element.textContent = decimals ? current.toFixed(decimals) : Math.round(current);
-    if (current >= target) window.clearInterval(timer);
-  }, 16);
+
+    if (progress < 1) {
+      window.requestAnimationFrame(update);
+    }
+  }
+
+  window.requestAnimationFrame(update);
 }
 
 function initBusinessMockup() {
@@ -309,19 +318,31 @@ function initBusinessMockup() {
   window.setTimeout(() => countMockMetric(document.getElementById('bw-leads'), 247, 1400), 430);
   window.setTimeout(() => countMockMetric(document.getElementById('bw-rate'), 38, 1100), 620);
 
-  [
+  const bars = [
     ['bw-b1', 18],
     ['bw-b2', 26],
     ['bw-b3', 34],
     ['bw-b4', 42],
     ['bw-b5', 51],
     ['bw-b6', 56]
-  ].forEach(([id, height], index) => {
+  ];
+
+  // Initialize bars to scaleY(0) and set target height once to avoid layout thrashing in transitions
+  bars.forEach(([id, height]) => {
+    const bar = document.getElementById(id);
+    if (bar) {
+      bar.style.height = `${height}px`;
+      bar.style.transform = 'scaleY(0)';
+      bar.style.transformOrigin = 'bottom';
+    }
+  });
+
+  bars.forEach(([id, height], index) => {
     window.setTimeout(() => {
       const bar = document.getElementById(id);
       if (!bar) return;
-      bar.style.transition = 'height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      bar.style.height = `${height}px`;
+      bar.style.transition = 'transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      bar.style.transform = 'scaleY(1)';
     }, 220 + index * 110);
   });
 
@@ -333,7 +354,7 @@ function initBusinessMockup() {
   ].forEach(([id, width], index) => {
     window.setTimeout(() => {
       const fill = document.getElementById(id);
-      if (fill) fill.style.width = `${width}%`;
+      if (fill) fill.style.transform = `scaleX(${width / 100})`;
     }, 620 + index * 170);
   });
 
@@ -357,17 +378,42 @@ function initBusinessMockup() {
   const body = mockup.querySelector('.bw-body');
   if (!cursor || !body) return;
 
+  let rect = null;
+  let mouseX = 0;
+  let mouseY = 0;
+  let ticking = false;
+
+  const updateRect = () => {
+    rect = body.getBoundingClientRect();
+  };
+
   body.addEventListener('mouseenter', () => {
+    updateRect();
     cursor.style.display = 'block';
   });
+
   body.addEventListener('mouseleave', () => {
     cursor.style.display = 'none';
   });
+
   body.addEventListener('mousemove', (event) => {
-    const rect = body.getBoundingClientRect();
-    cursor.style.left = `${event.clientX - rect.left - 3}px`;
-    cursor.style.top = `${event.clientY - rect.top - 3}px`;
-  });
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (rect) {
+          const x = mouseX - rect.left - 3;
+          const y = mouseY - rect.top - 3;
+          cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', updateRect, { passive: true });
 }
 
 function initInterface() {
@@ -410,17 +456,34 @@ function initInterface() {
 
   initMenu();
 
-  let pointerFrame = null;
-  document.addEventListener('mousemove', (event) => {
-    const xPos = (event.clientX / window.innerWidth - 0.5) * 20;
-    const yPos = (event.clientY / window.innerHeight - 0.5) * 20;
+  const glyph = document.querySelector('.glyph-svg');
+  let winWidth = window.innerWidth;
+  let winHeight = window.innerHeight;
+  let docMouseX = 0;
+  let docMouseY = 0;
+  let docTicking = false;
 
-    if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-    pointerFrame = window.requestAnimationFrame(() => {
-      const glyph = document.querySelector('.glyph-svg');
-      if (glyph) glyph.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-    });
-  });
+  window.addEventListener('resize', () => {
+    winWidth = window.innerWidth;
+    winHeight = window.innerHeight;
+  }, { passive: true });
+
+  document.addEventListener('mousemove', (event) => {
+    docMouseX = event.clientX;
+    docMouseY = event.clientY;
+
+    if (!docTicking) {
+      window.requestAnimationFrame(() => {
+        if (glyph) {
+          const xPos = (docMouseX / winWidth - 0.5) * 20;
+          const yPos = (docMouseY / winHeight - 0.5) * 20;
+          glyph.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+        docTicking = false;
+      });
+      docTicking = true;
+    }
+  }, { passive: true });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
