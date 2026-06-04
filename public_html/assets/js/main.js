@@ -188,9 +188,25 @@ async function handleLeadSubmit(event, form) {
 
     trackEvent('generate_lead', { form_name: formName });
     form.reset();
-    setFormMessage(form, 'Solicitud enviada. Redirigiendo...', 'success');
+    
+    let redirectUrl = '/gracias';
+    const currentLang = document.documentElement.lang || 'es';
+    if (currentLang === 'en') {
+      redirectUrl = '/en/thanks';
+    } else if (currentLang === 'de') {
+      redirectUrl = '/de/danke';
+    }
+
+    let successMsg = 'Solicitud enviada. Redirigiendo...';
+    if (currentLang === 'en') {
+      successMsg = 'Request sent. Redirecting...';
+    } else if (currentLang === 'de') {
+      successMsg = 'Anfrage gesendet. Weiterleitung...';
+    }
+    setFormMessage(form, successMsg, 'success');
+
     window.setTimeout(() => {
-      window.location.href = 'gracias';
+      window.location.href = redirectUrl;
     }, 400);
   } catch (error) {
     console.warn('Web3Forms AJAX failed, falling back to native submit.', error);
