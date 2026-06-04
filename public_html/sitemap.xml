@@ -39,11 +39,11 @@
 
   <!-- Spanish Services -->
   <url>
-    <loc>https://redlinestudio.es/services</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/services" />
+    <loc>https://redlinestudio.es/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/servicios" />
     <xhtml:link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/services" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/services" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/services" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/leistungen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/servicios" />
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -52,10 +52,10 @@
   <!-- English Services -->
   <url>
     <loc>https://redlinestudio.es/en/services</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/services" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/servicios" />
     <xhtml:link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/services" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/services" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/services" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/leistungen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/servicios" />
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -63,11 +63,11 @@
 
   <!-- German Services -->
   <url>
-    <loc>https://redlinestudio.es/de/services</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/services" />
+    <loc>https://redlinestudio.es/de/leistungen</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://redlinestudio.es/servicios" />
     <xhtml:link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/services" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/services" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/services" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/leistungen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/servicios" />
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

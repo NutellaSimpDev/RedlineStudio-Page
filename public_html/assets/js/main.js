@@ -96,7 +96,7 @@ function initAnalyticsEvents() {
     });
   });
 
-  document.querySelectorAll('a[href^="services.html#"], a[href^="services#"]').forEach((link) => {
+  document.querySelectorAll('a[href*="/servicios#"], a[href*="/services#"], a[href*="/leistungen#"]').forEach((link) => {
     link.addEventListener('click', () => {
       trackEvent('service_detail_click', {
         cta_text: link.textContent.trim(),
@@ -135,9 +135,6 @@ function initAnalyticsEvents() {
 
   document.querySelectorAll('form[action*="web3forms"]').forEach((form) => {
     let formStarted = false;
-    form.querySelector('[data-contact-field]')?.addEventListener('input', (event) => {
-      event.currentTarget.setCustomValidity('');
-    });
 
     form.addEventListener('focusin', () => {
       if (formStarted) return;
@@ -149,26 +146,6 @@ function initAnalyticsEvents() {
 
     form.addEventListener('submit', (event) => handleLeadSubmit(event, form));
   });
-}
-
-function isValidContactValue(value) {
-  const trimmed = value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  const phonePattern = /^[+()\d\s.-]+$/;
-  const digitCount = trimmed.replace(/\D/g, '').length;
-  return emailPattern.test(trimmed) || (phonePattern.test(trimmed) && digitCount >= 7);
-}
-
-function validateLeadContact(form) {
-  const contactField = form.querySelector('[data-contact-field]');
-  if (!contactField) return true;
-
-  contactField.setCustomValidity('');
-  if (isValidContactValue(contactField.value)) return true;
-
-  contactField.setCustomValidity('Ingresa un correo válido o un teléfono con al menos 7 dígitos.');
-  contactField.reportValidity();
-  return false;
 }
 
 function setFormMessage(form, message, state) {
@@ -193,7 +170,6 @@ async function handleLeadSubmit(event, form) {
   event.preventDefault();
 
   if (form.querySelector('[name="botcheck"]')?.checked) return;
-  if (!validateLeadContact(form)) return;
   if (!form.reportValidity()) return;
 
   const formName = form.dataset.formName || 'contacto_redline';

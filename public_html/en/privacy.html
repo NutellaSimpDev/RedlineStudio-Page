@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Request Received! | Redline Studio</title>
-  <meta name="description" content="Your request has been successfully sent. Reserve your free diagnostic session in our calendar." />
+  <title>Privacy Policy | Redline Studio</title>
+  <meta name="description" content="Privacy policy of Redline Studio. Information on the processing of your personal data in accordance with the GDPR." />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#020202" />
-  <link rel="canonical" href="https://redlinestudio.es/en/gracias" />
+  <link rel="canonical" href="https://redlinestudio.es/en/privacy" />
+
+  <link rel="alternate" hreflang="es" href="https://redlinestudio.es/privacidad" />
+  <link rel="alternate" hreflang="en" href="https://redlinestudio.es/en/privacy" />
+  <link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/datenschutz" />
+  <link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/privacidad" />
 
   <script>
     document.documentElement.classList.remove('no-js');
@@ -29,78 +34,53 @@
 
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
-    .thank-you-content {
+    .legal-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 40px 0;
     }
-    .thank-you-card {
+    .legal-card {
       background: rgba(12, 12, 14, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       padding: 48px;
       backdrop-filter: blur(20px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      text-align: center;
     }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #ff002b;
-      margin-bottom: 24px;
-      padding: 6px 14px;
-      border: 1px solid rgba(255, 0, 43, 0.2);
-      border-radius: 100px;
-      background: rgba(255, 0, 43, 0.05);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .thank-you-card h2 {
+    .legal-card h2 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #ffffff;
-      margin-top: 24px;
+      margin-top: 32px;
       margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 0, 43, 0.2);
+      padding-bottom: 8px;
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
-    .thank-you-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #86868b;
-      margin-bottom: 32px;
+    .legal-card h2:first-of-type {
+      margin-top: 0;
     }
-    .scheduler-container {
-      margin: 32px 0;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(13, 13, 15, 0.8);
-      min-height: 780px;
-    }
-    .back-home-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
+    .legal-card p, .legal-card ul {
       font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: #ff002b;
-      border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      margin-top: 16px;
-      box-shadow: 0 4px 20px rgba(255, 0, 43, 0.3);
+      line-height: 1.7;
+      color: #86868b;
+      margin-bottom: 20px;
     }
-    .back-home-btn:hover {
-      background: #e60027;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 0, 43, 0.45);
+    .legal-card ul {
+      padding-left: 20px;
+    }
+    .legal-card li {
+      margin-bottom: 8px;
+    }
+    .legal-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--led-red);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -116,17 +96,18 @@
     <div class="boot-panel boot-panel-bottom"></div>
     <div class="boot-line" id="boot-line"></div>
   </div>
+
   <div class="mobile-menu-overlay" id="menu-movil" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
     <div class="mobile-links-container">
       <a href="/en" class="m-link"><span>// 01</span>Home</a>
       <a href="/en/services" class="m-link"><span>// 02</span>Services</a>
       <a href="/en/#contact" class="m-link toggle-close"><span>// 03</span>Contact</a>
       <div class="m-lang-switcher" aria-label="Select language" role="navigation">
-        <a href="/gracias" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a>
+        <a href="/privacidad" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a>
         <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="/en/gracias" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a>
+        <a href="/en/privacy" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a>
         <span class="lang-separator-dot" aria-hidden="true">•</span>
-        <a href="/de/gracias" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a>
+        <a href="/de/datenschutz" class="m-lang-link" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a>
       </div>
     </div>
   </div>
@@ -166,9 +147,9 @@
             </svg>
           </button>
           <ul class="lang-dropdown-menu" role="menu">
-            <li role="none"><a href="/gracias" class="lang-dropdown-item" data-lang="es" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a></li>
-            <li role="none"><a href="/en/gracias" class="lang-dropdown-item active" data-lang="en" role="menuitem" aria-current="true" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a></li>
-            <li role="none"><a href="/de/gracias" class="lang-dropdown-item" data-lang="de" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a></li>
+            <li role="none"><a href="/privacidad" class="lang-dropdown-item" data-lang="es" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a></li>
+            <li role="none"><a href="/en/privacy" class="lang-dropdown-item active" data-lang="en" role="menuitem" aria-current="true" onclick="localStorage.setItem('redline_lang_preferred', 'en')">English</a></li>
+            <li role="none"><a href="/de/datenschutz" class="lang-dropdown-item" data-lang="de" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a></li>
           </ul>
         </div>
       </div>
@@ -180,27 +161,60 @@
   </header>
 
   <main class="layout-wrapper" id="main-content" style="padding-top: 160px; min-height: 80vh;">
-    <section class="thank-you-content">
-      <div class="thank-you-card ui-card">
-        <div class="status-badge">// REQUEST SUCCESSFULLY SENT!</div>
-        <h1 class="apple-headline" style="font-size: 2.8rem; margin-bottom: 12px; line-height: 1.1;">YOUR B2B AUDIT IS UNDERWAY.</h1>
+    <section class="legal-content">
+      <div class="legal-card ui-card">
+        <h1 class="apple-headline" style="font-size: 2.5rem; margin-bottom: 8px;">PRIVACY POLICY.</h1>
+        <div class="legal-meta">// LAST UPDATE: JUNE 2026</div>
 
-        <h2>Next Step: Choose a Date for Your Free Diagnosis</h2>
+        <h2>1. DATA CONTROLLER</h2>
         <p>
-          We have received your details correctly, and our team is already analyzing your website. To customize the diagnosis as much as possible, please <strong>select a day and time</strong> in the calendar below to hold a 15-minute video call where we will present the results of the analysis.
+          In accordance with the General Data Protection Regulation (GDPR) and organic national personal data regulations, we inform you that the data collected through this website are processed by:
+        </p>
+        <ul>
+          <li><strong>Business Name:</strong> REDLINE STUDIO</li>
+          <li><strong>Contact Email:</strong> <a href="mailto:contacto@redlinestudio.es" style="color: var(--led-red); text-decoration: none;">contacto@redlinestudio.es</a></li>
+          <li><strong>Website:</strong> <a href="https://redlinestudio.es/" target="_blank" style="color: var(--led-red); text-decoration: none;">redlinestudio.es</a></li>
+        </ul>
+
+        <h2>2. PURPOSE OF DATA PROCESSING</h2>
+        <p>
+          We process personal data provided by interested parties for the following purposes:
+        </p>
+        <ul>
+          <li>To manage inquiries, requests for information, or quotes sent through our contact forms.</li>
+          <li>To carry out the free technical and commercial audit requested by the user.</li>
+          <li>To send commercial communications related to our digital services of web development, SEO positioning, SEM campaigns, and AI automation, provided we have your express consent.</li>
+        </ul>
+
+        <h2>3. LAWFULNESS OF PROCESSING</h2>
+        <p>
+          The legal basis for processing your data is the <strong>consent of the data subject</strong>. By checking the acceptance box in our forms and submitting the information, the user expressly consents to REDLINE STUDIO processing their data to respond to their request.
         </p>
 
-        <!-- Calendly inline widget begin -->
-        <div class="scheduler-container" style="min-height: 780px;">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/redlinestudiocorp/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=020202&text_color=ffffff&primary_color=ff002b" style="min-width:320px;height:780px;"></div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
-        <!-- Calendly inline widget end -->
-
-        <p style="margin-top: 24px; font-size: 0.9rem;">
-          Don't have your calendar handy? Don't worry. We have sent you an email with the link to book at another time.
+        <h2>4. DATA RETENTION PERIOD</h2>
+        <p>
+          The personal data provided will be kept for the time necessary to fulfill the purpose for which they were collected and to determine any possible liabilities that could derive from that purpose and the processing of the data.
         </p>
-        <a href="/en" class="back-home-btn">← Back to Home</a>
+
+        <h2>5. DATA RECIPIENTS</h2>
+        <p>
+          REDLINE STUDIO will not transfer your personal data to third parties, except under express legal obligation or when strictly necessary for the provision of the requested service (for example, server infrastructure providers or analytical services in compliance with the GDPR).
+        </p>
+
+        <h2>6. RIGHTS OF THE DATA SUBJECT</h2>
+        <p>
+          You have the right to obtain confirmation as to whether we are processing your personal data. You can exercise your rights of:
+        </p>
+        <ul>
+          <li><strong>Access:</strong> Right to know what data we are processing about you.</li>
+          <li><strong>Rectification:</strong> Right to correct inaccurate or incomplete data.</li>
+          <li><strong>Erasure (Right to be forgotten):</strong> Right to request the deletion of your data when they are no longer necessary.</li>
+          <li><strong>Restriction of processing:</strong> Right to request the temporary suspension of processing.</li>
+          <li><strong>Objection:</strong> Right to object to the processing of your data for specific purposes.</li>
+        </ul>
+        <p>
+          To exercise these rights, you may send a written communication accompanied by a copy of your identity document to the email: <a href="mailto:contacto@redlinestudio.es" style="color: var(--led-red); text-decoration: none;">contacto@redlinestudio.es</a>.
+        </p>
       </div>
     </section>
   </main>
