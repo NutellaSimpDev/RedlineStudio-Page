@@ -1289,6 +1289,7 @@ article[id] {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  overflow: visible;
   scroll-margin-top: 170px;
 }
 
@@ -1693,6 +1694,35 @@ article[id] {
 .skip-link:focus {
   top: 20px;
   outline: none;
+}
+
+.rgpd-container {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 15px 0 20px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #86868b;
+  text-align: left;
+}
+
+.rgpd-container input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: #ff002b;
+}
+
+.rgpd-container label {
+  cursor: pointer;
+}
+
+.rgpd-container a {
+  color: #ff002b;
+  text-decoration: none;
 }
 
 .rgpd-container a:hover,
