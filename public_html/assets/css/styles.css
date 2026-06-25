@@ -1696,7 +1696,7 @@ article[id] {
   outline: none;
 }
 
-.rgpd-container {
+.form-agreement-box {
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -1707,7 +1707,7 @@ article[id] {
   text-align: left;
 }
 
-.rgpd-container input[type="checkbox"] {
+.form-agreement-box input[type="checkbox"] {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
@@ -1716,16 +1716,16 @@ article[id] {
   accent-color: #ff002b;
 }
 
-.rgpd-container label {
+.form-agreement-box label {
   cursor: pointer;
 }
 
-.rgpd-container a {
+.form-agreement-box a {
   color: #ff002b;
   text-decoration: none;
 }
 
-.rgpd-container a:hover,
+.form-agreement-box a:hover,
 .footer-contact:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
