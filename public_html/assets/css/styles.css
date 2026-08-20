@@ -1784,6 +1784,75 @@ article[id] {
   line-height: 1.6;
 }
 
+.blog-meta {
+  margin-bottom: 40px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.blog-card-meta {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.article-prose {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.article-prose h2 {
+  margin: 48px 0 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.article-prose p {
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.article-prose ul {
+  padding-left: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+
+.article-prose li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.article-prose li::before {
+  position: absolute;
+  left: 0;
+  color: var(--led-red);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  content: '>';
+}
+
+.article-prose strong {
+  color: var(--text-solid);
+}
+
+.article-cta {
+  margin-top: 56px;
+}
+
 .form-agreement-box a:hover,
 .footer-contact:hover {
   text-decoration: underline;
