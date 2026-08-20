@@ -171,10 +171,10 @@
         <span class="panel-tag">[ AUDITORÍA DE CAPTACIÓN B2B ]</span>
         <h2 class="apple-headline contact-title">Consigue una Auditoría Gratuita de Captación B2B</h2>
         <p class="contact-intro">Analizamos el desarrollo web de tu empresa, tu posicionamiento SEO B2B actual y tu estrategia de captación de leads sin compromiso. Recibe tu plan de acción en 24h laborables.</p>
-        <form action="https://api.web3forms.com/submit" method="POST" data-form-name="contact_blog">
-          <input type="hidden" name="access_key" value="ddf395ca-bd76-4b7d-8581-604357cbf7b0" />
+        <form action="/send-lead.php" method="POST" data-form-name="contact_blog">
           <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO - Blog" />
           <input type="hidden" name="source_page" value="blog" />
+          <input type="hidden" name="redirect" value="/gracias" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <label class="sr-only" for="lead-name">Tu nombre completo</label>

@@ -133,7 +133,7 @@ function initAnalyticsEvents() {
     });
   });
 
-  document.querySelectorAll('form[action*="web3forms"]').forEach((form) => {
+  document.querySelectorAll('form[action*="send-lead"]').forEach((form) => {
     let formStarted = false;
 
     form.addEventListener('focusin', () => {
@@ -184,7 +184,7 @@ async function handleLeadSubmit(event, form) {
       headers: { Accept: 'application/json' }
     });
 
-    if (!response.ok) throw new Error(`Web3Forms responded with ${response.status}`);
+    if (!response.ok) throw new Error(`Lead endpoint responded with ${response.status}`);
 
     trackEvent('generate_lead', { form_name: formName });
     form.reset();
@@ -209,7 +209,7 @@ async function handleLeadSubmit(event, form) {
       window.location.href = redirectUrl;
     }, 400);
   } catch (error) {
-    console.warn('Web3Forms AJAX failed, falling back to native submit.', error);
+    console.warn('Lead form AJAX submit failed, falling back to native submit.', error);
     trackEvent('form_submit_fallback', { form_name: formName });
     HTMLFormElement.prototype.submit.call(form);
     return;

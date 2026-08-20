@@ -372,9 +372,10 @@
         <span class="panel-tag">[ B2B LEAD-ANALYSE ]</span>
         <h2 class="apple-headline contact-title">Kostenlose B2B-Analyse anfordern</h2>
         <p class="contact-intro">Wir analysieren die Website Ihres Unternehmens, Ihre aktuelle B2B SEO-Positionierung und Ihre Lead-Strategie – unverbindlich. Sie erhalten Ihren Aktionsplan innerhalb von 24 Stunden.</p>
-        <form action="https://api.web3forms.com/submit" method="POST" data-form-name="contact_home_de">
-          <input type="hidden" name="access_key" value="ddf395ca-bd76-4b7d-8581-604357cbf7b0" />
+        <form action="/send-lead.php" method="POST" data-form-name="contact_home_de">
           <input type="hidden" name="subject" value="New Lead (DE) - REDLINE STUDIO" />
+          <input type="hidden" name="source_page" value="home_de" />
+          <input type="hidden" name="redirect" value="/de/danke" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <label class="sr-only" for="lead-name">Ihr vollständiger Name</label>
