@@ -507,12 +507,92 @@ function initLangDropdown() {
   });
 }
 
+// --- Motion (motion.dev) enhancements ---------------------------------
+// Loaded dynamically from CDN so the site works fully without it (offline,
+// blocked CDN, prefers-reduced-motion): everything above this line already
+// gives a complete experience on its own.
+
+function initScrollProgress(animate, scroll) {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  scroll(animate(bar, { scaleX: [0, 1] }, { ease: 'linear' }));
+}
+
+function initMagneticButtons(animate) {
+  document.querySelectorAll('.action-trigger').forEach((button) => {
+    button.addEventListener('mousemove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = (event.clientX - rect.left - rect.width / 2) * 0.35;
+      const y = (event.clientY - rect.top - rect.height / 2) * 0.35;
+      animate(button, { x, y }, { type: 'spring', stiffness: 300, damping: 22 });
+    });
+
+    button.addEventListener('mouseleave', () => {
+      animate(button, { x: 0, y: 0 }, { type: 'spring', stiffness: 300, damping: 18 });
+    });
+  });
+}
+
+function initCardTilt(animate) {
+  document.querySelectorAll('.bento-container > .glass-panel, .service-grid > .glass-panel-large').forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      animate(card, { rotateX: py * -6, rotateY: px * 6, scale: 1.015 }, { type: 'spring', stiffness: 220, damping: 24 });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      animate(card, { rotateX: 0, rotateY: 0, scale: 1 }, { type: 'spring', stiffness: 220, damping: 20 });
+    });
+  });
+}
+
+function initCursorGlow(animate) {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+
+  glow.classList.add('is-active');
+  window.addEventListener('mousemove', (event) => {
+    animate(glow, { x: event.clientX, y: event.clientY }, { type: 'spring', stiffness: 120, damping: 22, mass: 0.4 });
+  }, { passive: true });
+}
+
+function initProseReveal(animate, inView) {
+  document.querySelectorAll('.article-prose h2').forEach((heading) => {
+    animate(heading, { opacity: 0, y: 24 }, { duration: 0 });
+    inView(heading, () => {
+      animate(heading, { opacity: 1, y: 0 }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
+    }, { amount: 0.6 });
+  });
+}
+
+function initMotionEnhancements() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  import('https://cdn.jsdelivr.net/npm/framer-motion@13.1.0/dom/+esm')
+    .then(({ animate, scroll, inView }) => {
+      initScrollProgress(animate, scroll);
+      initProseReveal(animate, inView);
+
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        initMagneticButtons(animate);
+        initCardTilt(animate);
+        initCursorGlow(animate);
+      }
+    })
+    .catch((error) => {
+      console.warn('Motion enhancements unavailable, site keeps working without them.', error);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
   initAnalyticsEvents();
   initMenu();
   initLangDropdown();
   initBusinessMockup();
+  initMotionEnhancements();
 
   const bootLine = document.getElementById('boot-line');
   const bootElement = document.getElementById('boot');
