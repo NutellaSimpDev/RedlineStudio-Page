@@ -47,11 +47,27 @@ if (!empty($_POST['botcheck'])) {
     exit;
 }
 
+// Timing check: main.js stamps this field with Date.now() when the form is
+// wired up on page load. No real person fills name+company+email+phone in
+// under 3 seconds, so a fast submit is almost certainly a script. Absence of
+// the field (JS disabled) is NOT penalized - it just skips this check.
+$ts = isset($_POST['ts']) ? (int) $_POST['ts'] : 0;
+if ($ts > 0) {
+    $elapsedMs = (int) round(microtime(true) * 1000) - $ts;
+    if ($elapsedMs >= 0 && $elapsedMs < 3000) {
+        respond(200, ['success' => true], $redirectTarget);
+        exit;
+    }
+}
+
 $name = cleanHeaderValue((string) ($_POST['Nombre'] ?? ''));
 $company = cleanHeaderValue((string) ($_POST['Empresa'] ?? ''));
+$country = cleanHeaderValue((string) ($_POST['Pais'] ?? ''));
 $service = cleanHeaderValue((string) ($_POST['Servicio_Interes'] ?? ''));
 $email = trim((string) ($_POST['Email'] ?? ''));
 $phone = cleanHeaderValue((string) ($_POST['Telefono'] ?? ''));
+$website = cleanHeaderValue((string) ($_POST['Sitio_Web'] ?? ''));
+$budget = cleanHeaderValue((string) ($_POST['Presupuesto'] ?? ''));
 $sourcePage = cleanHeaderValue((string) ($_POST['source_page'] ?? 'unknown'));
 $subject = cleanHeaderValue((string) ($_POST['subject'] ?? 'Nuevo Lead - REDLINE STUDIO'));
 
@@ -63,9 +79,12 @@ if ($name === '' || $company === '' || !filter_var($email, FILTER_VALIDATE_EMAIL
 $body = "Nuevo lead desde redlinestudio.es\n\n"
     . "Nombre: {$name}\n"
     . "Empresa: {$company}\n"
+    . "Pais: {$country}\n"
     . "Servicio de interes: {$service}\n"
     . "Email: {$email}\n"
     . "Telefono: {$phone}\n"
+    . "Sitio web actual: " . ($website !== '' ? $website : '(no indicado)') . "\n"
+    . "Presupuesto aproximado: " . ($budget !== '' ? $budget : '(no indicado)') . "\n"
     . "Pagina de origen: {$sourcePage}\n";
 
 $headers = "From: Redline Studio Web <no-reply@{$fromDomain}>\r\n"

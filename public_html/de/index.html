@@ -376,6 +376,7 @@
           <input type="hidden" name="subject" value="New Lead (DE) - REDLINE STUDIO" />
           <input type="hidden" name="source_page" value="home_de" />
           <input type="hidden" name="redirect" value="/de/danke" />
+          <input type="hidden" name="ts" value="" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <label class="sr-only" for="lead-name">Ihr vollständiger Name</label>
@@ -383,6 +384,16 @@
 
           <label class="sr-only" for="lead-company">Name Ihres Unternehmens</label>
           <input id="lead-company" class="form-control" name="Empresa" type="text" autocomplete="organization" placeholder="Name Ihres Unternehmens" required />
+
+          <label class="sr-only" for="lead-country">Land</label>
+          <select id="lead-country" class="form-control" name="Pais" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
+            <option value="" disabled selected>Land</option>
+            <option value="Spanien">Spanien</option>
+            <option value="Mexiko">Mexiko</option>
+            <option value="Kolumbien">Kolumbien</option>
+            <option value="Chile">Chile</option>
+            <option value="Andere">Anderes Land</option>
+          </select>
 
           <label class="sr-only" for="lead-need">In welchem Bereich möchten Sie wachsen?</label>
           <select id="lead-need" class="form-control" name="Servicio_Interes" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
@@ -399,6 +410,19 @@
 
           <label class="sr-only" for="lead-phone">Telefonnummer</label>
           <input id="lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Telefonnummer" required />
+
+          <label class="sr-only" for="lead-website">Ihre aktuelle Website (optional)</label>
+          <input id="lead-website" class="form-control" name="Sitio_Web" type="text" autocomplete="url" placeholder="Ihre aktuelle Website (optional)" />
+
+          <label class="sr-only" for="lead-budget">Ungefähres Budget (optional)</label>
+          <select id="lead-budget" class="form-control" name="Presupuesto" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);">
+            <option value="" selected>Ungefähres Budget (optional)</option>
+            <option value="unter-1000">Unter 1.000€</option>
+            <option value="1000-3000">1.000€ - 3.000€</option>
+            <option value="3000-6000">3.000€ - 6.000€</option>
+            <option value="ueber-6000">Über 6.000€</option>
+            <option value="keine-angabe">Keine Angabe</option>
+          </select>
 
           <div class="form-agreement-box">
             <input type="checkbox" id="home-agreement-check" name="Aceptacion_Condiciones" aria-describedby="agreement-policy-desc" required />

@@ -297,6 +297,7 @@
           <input type="hidden" name="subject" value="New Lead (EN) - REDLINE STUDIO - Services" />
           <input type="hidden" name="source_page" value="services_en" />
           <input type="hidden" name="redirect" value="/en/thanks" />
+          <input type="hidden" name="ts" value="" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <label class="sr-only" for="service-lead-name">Your full name</label>
@@ -304,6 +305,16 @@
 
           <label class="sr-only" for="service-lead-company">Your company name</label>
           <input id="service-lead-company" class="form-control" name="Empresa" type="text" autocomplete="organization" placeholder="Your company name" required />
+
+          <label class="sr-only" for="service-lead-country">Country</label>
+          <select id="service-lead-country" class="form-control" name="Pais" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
+            <option value="" disabled selected>Country</option>
+            <option value="Spain">Spain</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Chile">Chile</option>
+            <option value="Other">Other country</option>
+          </select>
 
           <label class="sr-only" for="service-lead-need">In which area of acquisition do you need to grow?</label>
           <select id="service-lead-need" class="form-control" name="Servicio_Interes" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
@@ -320,6 +331,19 @@
 
           <label class="sr-only" for="service-lead-phone">Contact phone</label>
           <input id="service-lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Contact phone" required />
+
+          <label class="sr-only" for="service-lead-website">Your current website (optional)</label>
+          <input id="service-lead-website" class="form-control" name="Sitio_Web" type="text" autocomplete="url" placeholder="Your current website (optional)" />
+
+          <label class="sr-only" for="service-lead-budget">Approximate budget (optional)</label>
+          <select id="service-lead-budget" class="form-control" name="Presupuesto" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);">
+            <option value="" selected>Approximate budget (optional)</option>
+            <option value="under-1000">Under €1,000</option>
+            <option value="1000-3000">€1,000 - €3,000</option>
+            <option value="3000-6000">€3,000 - €6,000</option>
+            <option value="over-6000">Over €6,000</option>
+            <option value="prefer-not-say">Prefer not to say</option>
+          </select>
 
           <div class="form-agreement-box">
             <input type="checkbox" id="service-agreement-check" name="Aceptacion_Condiciones" aria-describedby="agreement-policy-desc" required />

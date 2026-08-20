@@ -134,6 +134,9 @@ function initAnalyticsEvents() {
   });
 
   document.querySelectorAll('form[action*="send-lead"]').forEach((form) => {
+    const tsField = form.querySelector('input[name="ts"]');
+    if (tsField) tsField.value = String(Date.now());
+
     let formStarted = false;
 
     form.addEventListener('focusin', () => {

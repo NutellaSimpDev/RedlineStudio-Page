@@ -398,6 +398,7 @@
           <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO" />
           <input type="hidden" name="source_page" value="home" />
           <input type="hidden" name="redirect" value="/gracias" />
+          <input type="hidden" name="ts" value="" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <label class="sr-only" for="lead-name">Tu nombre completo</label>
@@ -405,6 +406,16 @@
 
           <label class="sr-only" for="lead-company">Nombre de tu empresa</label>
           <input id="lead-company" class="form-control" name="Empresa" type="text" autocomplete="organization" placeholder="Nombre de tu empresa" required />
+
+          <label class="sr-only" for="lead-country">País</label>
+          <select id="lead-country" class="form-control" name="Pais" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
+            <option value="" disabled selected>País</option>
+            <option value="España">España</option>
+            <option value="México">México</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Chile">Chile</option>
+            <option value="Otro">Otro país</option>
+          </select>
 
           <label class="sr-only" for="lead-need">¿En qué área de captación necesitas crecer?</label>
           <select id="lead-need" class="form-control" name="Servicio_Interes" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
@@ -421,6 +432,19 @@
 
           <label class="sr-only" for="lead-phone">Teléfono de contacto</label>
           <input id="lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Teléfono de contacto" required />
+
+          <label class="sr-only" for="lead-website">Tu sitio web actual (opcional)</label>
+          <input id="lead-website" class="form-control" name="Sitio_Web" type="text" autocomplete="url" placeholder="Tu sitio web actual (opcional)" />
+
+          <label class="sr-only" for="lead-budget">Presupuesto aproximado (opcional)</label>
+          <select id="lead-budget" class="form-control" name="Presupuesto" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);">
+            <option value="" selected>Presupuesto aproximado (opcional)</option>
+            <option value="menos-1000">Menos de 1.000€</option>
+            <option value="1000-3000">1.000€ - 3.000€</option>
+            <option value="3000-6000">3.000€ - 6.000€</option>
+            <option value="mas-6000">Más de 6.000€</option>
+            <option value="prefiero-no-decir">Prefiero no decirlo</option>
+          </select>
 
           <div class="form-agreement-box">
             <input type="checkbox" id="home-agreement-check" name="Aceptacion_Condiciones" aria-describedby="agreement-policy-desc" required />
