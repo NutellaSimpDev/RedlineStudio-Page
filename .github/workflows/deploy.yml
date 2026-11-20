@@ -35,7 +35,8 @@ jobs:
           FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
           FTP_USER: ${{ secrets.HOSTINGER_FTP_USER }}
           LFTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          SERVER_DIR: ${{ vars.HOSTINGER_SERVER_DIR || '.' }}
+          # The FTP login lands in the account home; the site lives below it.
+          SERVER_DIR: ${{ vars.HOSTINGER_SERVER_DIR || 'domains/redlinestudio.es/public_html/' }}
         run: |
           lftp -u "$FTP_USER" --env-password "$FTP_HOST" <<EOF
           set net:max-retries 6

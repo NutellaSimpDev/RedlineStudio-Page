@@ -42,13 +42,14 @@ Crea estos tres:
 
 Los secretos van cifrados: nadie los ve, ni siquiera en los registros.
 
-## Paso 3 (solo si viste la carpeta `public_html`)
+## Paso 3: carpeta de destino (ya configurada)
 
-Misma pantalla → pestaña **Variables** → **New repository variable**:
+La cuenta FTP entra a la carpeta general de la cuenta, y la web vive en
+`domains/redlinestudio.es/public_html/`. El workflow ya apunta ahí por defecto.
 
-| Nombre | Valor |
-| --- | --- |
-| `HOSTINGER_SERVER_DIR` | `public_html/` |
+Solo si algún día cambia, crea en la misma pantalla → pestaña **Variables** →
+**New repository variable** `HOSTINGER_SERVER_DIR` con la ruta nueva
+(terminada en `/`).
 
 ## Paso 4: primer despliegue
 
