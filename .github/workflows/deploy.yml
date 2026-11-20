@@ -1,0 +1,35 @@
+# Publishes public_html/ to Hostinger on every push to main.
+# Setup (once): see docs/despliegue-hostinger.md.
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public_html/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      # Only uploads what changed since the last deploy (it keeps a small
+      # .ftp-deploy-sync-state.json on the server, hidden by .htaccess).
+      # Files on the server that this repo never uploaded are left alone,
+      # so subdomains and anything uploaded by hand are not touched.
+      - name: Upload public_html to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./public_html/
+          server-dir: ${{ vars.HOSTINGER_SERVER_DIR || './' }}

@@ -308,9 +308,20 @@ function initBusinessMockup() {
     window.setTimeout(() => document.getElementById(id)?.classList.add('bw-loaded'), index * 180);
   });
 
-  window.setTimeout(() => countMockMetric(document.getElementById('bw-rev'), 4.2, 1200, 1), 260);
-  window.setTimeout(() => countMockMetric(document.getElementById('bw-leads'), 247, 1400), 430);
-  window.setTimeout(() => countMockMetric(document.getElementById('bw-rate'), 38, 1100), 620);
+  // Each page sets its own figures with data-target / data-h / data-w; the
+  // numbers here are only the fallback for pages that don't.
+  const target = (id, fallback) => {
+    const value = Number(document.getElementById(id)?.dataset.target);
+    return Number.isFinite(value) && value > 0 ? value : fallback;
+  };
+  const decimalsOf = (value) => (Number.isInteger(value) ? 0 : 1);
+  const rev = target('bw-rev', 4.2);
+  const leads = target('bw-leads', 247);
+  const rate = target('bw-rate', 38);
+
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-rev'), rev, 1200, decimalsOf(rev)), 260);
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-leads'), leads, 1400, decimalsOf(leads)), 430);
+  window.setTimeout(() => countMockMetric(document.getElementById('bw-rate'), rate, 1100, decimalsOf(rate)), 620);
 
   const bars = [
     ['bw-b1', 18],
@@ -319,7 +330,7 @@ function initBusinessMockup() {
     ['bw-b4', 42],
     ['bw-b5', 51],
     ['bw-b6', 56]
-  ];
+  ].map(([id, fallback]) => [id, Number(document.getElementById(id)?.dataset.h) || fallback]);
 
   // Initialize bars to scaleY(0) and set target height once to avoid layout thrashing in transitions
   bars.forEach(([id, height]) => {
@@ -345,9 +356,10 @@ function initBusinessMockup() {
     ['bw-f2', 42],
     ['bw-f3', 21],
     ['bw-f4', 9]
-  ].forEach(([id, width], index) => {
+  ].forEach(([id, fallback], index) => {
     window.setTimeout(() => {
       const fill = document.getElementById(id);
+      const width = Number(fill?.dataset.w) || fallback;
       if (fill) fill.style.transform = `scaleX(${width / 100})`;
     }, 620 + index * 170);
   });
@@ -589,6 +601,176 @@ function initMotionEnhancements() {
     });
 }
 
+// --- Liquid Glass -------------------------------------------------------
+// Real refraction: every glass surface gets its own SVG filter whose
+// displacement map bends the backdrop along a convex bezel, run once per
+// colour channel at slightly different strengths for chromatic aberration.
+// Only Chromium renders SVG filters inside backdrop-filter, so every other
+// browser keeps the CSS material from styles.css (tint, rim, sheen), which
+// stands on its own.
+
+const LIQUID_GLASS_SELECTOR = '.glass-nav, .glass-panel, .glass-panel-large, .cookie-consent';
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+function supportsLiquidRefraction() {
+  const brands = (navigator.userAgentData && navigator.userAgentData.brands) || [];
+  const isChromium = brands.some(({ brand }) => brand === 'Chromium');
+  // Phones and tablets get the CSS material only: a full-screen SVG filter
+  // per surface costs too much GPU there for what it adds.
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  return isChromium && finePointer;
+}
+
+// Red = horizontal offset, green = vertical, 128 = no offset. Inside the
+// bezel each pixel samples from further in, along the edge normal, rising
+// steeply towards the rim like the curved edge of a thick lens.
+function buildDisplacementMap(width, height, radius, bezel) {
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext('2d');
+  const image = context.createImageData(width, height);
+  const data = image.data;
+  const halfW = width / 2;
+  const halfH = height / 2;
+  const r = Math.min(radius, halfW, halfH);
+
+  for (let y = 0; y < height; y += 1) {
+    const py = y + 0.5 - halfH;
+    const qy = Math.abs(py) - (halfH - r);
+
+    for (let x = 0; x < width; x += 1) {
+      const px = x + 0.5 - halfW;
+      const qx = Math.abs(px) - (halfW - r);
+      let inside;
+      let nx = 0;
+      let ny = 0;
+
+      if (qx > 0 && qy > 0) {
+        const length = Math.hypot(qx, qy);
+        inside = r - length;
+        nx = (qx / length) * Math.sign(px);
+        ny = (qy / length) * Math.sign(py);
+      } else if (qx > qy) {
+        inside = r - qx;
+        nx = Math.sign(px);
+      } else {
+        inside = r - qy;
+        ny = Math.sign(py);
+      }
+
+      let strength = 0;
+      if (inside >= 0 && inside < bezel) {
+        const t = 1 - inside / bezel;
+        strength = 1 - Math.sqrt(1 - t * t);
+      }
+
+      const i = (y * width + x) * 4;
+      data[i] = 128 - nx * strength * 127;
+      data[i + 1] = 128 - ny * strength * 127;
+      data[i + 2] = 128;
+      data[i + 3] = 255;
+    }
+  }
+
+  context.putImageData(image, 0, 0);
+  return canvas.toDataURL();
+}
+
+function createLiquidFilter(id, href, width, height, scale) {
+  const channel = (name, strength, matrix) => `
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="${strength}" xChannelSelector="R" yChannelSelector="G" result="${name}-shift" />
+    <feColorMatrix in="${name}-shift" type="matrix" values="${matrix}" result="${name}" />`;
+
+  const markup = `<svg xmlns="${SVG_NS}">
+    <filter id="${id}" x="0" y="0" width="${width}" height="${height}" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feImage href="${href}" x="0" y="0" width="${width}" height="${height}" preserveAspectRatio="none" result="map" />
+      ${channel('red', scale, '1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0')}
+      ${channel('green', scale * 0.92, '0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0')}
+      ${channel('blue', scale * 0.84, '0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0')}
+      <feBlend in="red" in2="green" mode="screen" result="red-green" />
+      <feBlend in="red-green" in2="blue" mode="screen" />
+    </filter>
+  </svg>`;
+
+  const parsed = new DOMParser().parseFromString(markup, 'image/svg+xml');
+  return document.importNode(parsed.documentElement.firstElementChild, true);
+}
+
+function initGlassSheen() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  let frame = 0;
+  let lastEvent = null;
+
+  document.addEventListener('pointermove', (event) => {
+    lastEvent = event;
+    if (frame) return;
+
+    frame = window.requestAnimationFrame(() => {
+      frame = 0;
+      const target = lastEvent.target instanceof Element ? lastEvent.target.closest(LIQUID_GLASS_SELECTOR) : null;
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      target.style.setProperty('--lg-x', `${((lastEvent.clientX - rect.left) / rect.width) * 100}%`);
+      target.style.setProperty('--lg-y', `${((lastEvent.clientY - rect.top) / rect.height) * 100}%`);
+    });
+  }, { passive: true });
+}
+
+function initLiquidGlass() {
+  initGlassSheen();
+
+  const surfaces = Array.from(document.querySelectorAll(LIQUID_GLASS_SELECTOR));
+  if (!surfaces.length || !supportsLiquidRefraction()) return;
+
+  const host = document.createElementNS(SVG_NS, 'svg');
+  host.setAttribute('aria-hidden', 'true');
+  host.setAttribute('width', '0');
+  host.setAttribute('height', '0');
+  host.style.position = 'absolute';
+  host.style.pointerEvents = 'none';
+  document.body.appendChild(host);
+  document.documentElement.classList.add('has-liquid-glass');
+
+  const rendered = new WeakMap();
+  const timers = new WeakMap();
+
+  const render = (surface, index) => {
+    // Layout size, not getBoundingClientRect: the reveal and tilt transforms
+    // must not change the map.
+    const width = surface.offsetWidth;
+    const height = surface.offsetHeight;
+    if (width < 2 || height < 2) return;
+
+    const radius = parseFloat(getComputedStyle(surface).borderTopLeftRadius) || 0;
+    const key = `${width}x${height}x${radius}`;
+    if (rendered.get(surface) === key) return;
+    rendered.set(surface, key);
+
+    const isNav = surface.classList.contains('glass-nav');
+    const bezel = Math.max(14, Math.min(44, Math.min(width, height) * 0.22));
+    const scale = isNav ? 120 : 140;
+    const id = `liquid-glass-${index}`;
+
+    host.querySelector(`#${id}`)?.remove();
+    host.appendChild(createLiquidFilter(id, buildDisplacementMap(width, height, radius, bezel), width, height, scale));
+    surface.style.backdropFilter = `blur(${isNav ? 2 : 4}px) url(#${id}) saturate(185%) brightness(1.06)`;
+  };
+
+  const schedule = (surface) => {
+    window.clearTimeout(timers.get(surface));
+    timers.set(surface, window.setTimeout(() => render(surface, surfaces.indexOf(surface)), 120));
+  };
+
+  // First pass on a timer, not from the observer: ResizeObserver only reports
+  // while the page renders, so a tab opened in the background would stay flat.
+  surfaces.forEach(schedule);
+  const observer = new ResizeObserver((entries) => entries.forEach(({ target }) => schedule(target)));
+  surfaces.forEach((surface) => observer.observe(surface));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
   initAnalyticsEvents();
@@ -596,6 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangDropdown();
   initBusinessMockup();
   initMotionEnhancements();
+  initLiquidGlass();
 
   const bootLine = document.getElementById('boot-line');
   const bootElement = document.getElementById('boot');

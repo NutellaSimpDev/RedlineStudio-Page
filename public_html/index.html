@@ -13,8 +13,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>Agencia de Desarrollo Web Corporativo y SEO B2B | Redline Studio</title>
-  <meta name="description" content="Agencia especializada en desarrollo web corporativo, posicionamiento SEO B2B y campañas SEM (Google/LinkedIn Ads) para empresas que buscan captar leads y clientes de alto valor." />
+  <title>Software a medida y desarrollo web para pymes | Redline Studio</title>
+  <meta name="description" content="Software de gestión a medida, webs que venden, branding y automatización con IA para pymes de España y Latinoamérica. Precio cerrado y diagnóstico gratis." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Redline Studio" />
   <meta name="theme-color" content="#020202" />
@@ -25,37 +25,16 @@
   <link rel="alternate" hreflang="de" href="https://redlinestudio.es/de/" />
   <link rel="alternate" hreflang="x-default" href="https://redlinestudio.es/" />
 
-  <script>
-    (function() {
-      var path = window.location.pathname;
-      if (path === '/' || path === '/index.html' || path === '/index' || path.endsWith('/')) {
-        var preferredLang = localStorage.getItem('redline_lang_preferred');
-        if (!preferredLang) {
-          var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-          if (userLang.startsWith('de')) {
-            window.location.replace('de/');
-          } else if (userLang.startsWith('en')) {
-            window.location.replace('en/');
-          }
-        } else if (preferredLang === 'de') {
-          window.location.replace('de/');
-        } else if (preferredLang === 'en') {
-          window.location.replace('en/');
-        }
-      }
-    })();
-  </script>
-
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Redline Studio" />
-  <meta property="og:title" content="Agencia de Desarrollo Web Corporativo y SEO B2B | Redline Studio" />
-  <meta property="og:description" content="Desarrollo web corporativo premium, estrategias SEO B2B y publicidad digital (SEM) enfocadas en la captación de leads y oportunidades comerciales para empresas." />
+  <meta property="og:title" content="Software a medida que hace ganar más a tu negocio | Redline Studio" />
+  <meta property="og:description" content="Sistemas de gestión, webs, branding y automatización con IA para pymes. Caso real: un restaurante con 300 clientes al día que hoy cuadra cada plato y cada sol." />
   <meta property="og:url" content="https://redlinestudio.es/" />
   <meta property="og:image" content="https://redlinestudio.es/assets/images/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Agencia de Desarrollo Web Corporativo y SEO B2B | Redline Studio" />
-  <meta name="twitter:description" content="Webs corporativas premium y SEO B2B de alto impacto para captar leads y cerrar reuniones de alto valor." />
+  <meta name="twitter:title" content="Software a medida que hace ganar más a tu negocio | Redline Studio" />
+  <meta name="twitter:description" content="Sistemas de gestión, webs, branding y automatización con IA para pymes de España y Latinoamérica." />
   <meta name="twitter:image" content="https://redlinestudio.es/assets/images/logo.png" />
 
   <script>
@@ -66,10 +45,6 @@
   <link rel="apple-touch-icon" href="/assets/images/favico.png?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwgknk-4.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVnskPMBBSSJLm2E.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;800&amp;family=Space+Grotesk:wght@700;900&amp;display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;800&amp;family=Space+Grotesk:wght@700;900&amp;display=swap" media="print" onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;800&amp;family=Space+Grotesk:wght@700;900&amp;display=swap" />
@@ -79,43 +54,52 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Redline Studio",
-      "url": "https://redlinestudio.es/",
-      "logo": "https://redlinestudio.es/assets/images/logo.png",
-      "image": "https://redlinestudio.es/assets/images/logo.png",
-      "email": "contacto@redlinestudio.es",
-      "description": "Agencia especializada en desarrollo web corporativo, SEO B2B, posicionamiento web en Google, campañas SEM y captación de leads comerciales para empresas.",
-      "areaServed": [
+      "@graph": [
         {
-          "@type": "Country",
-          "name": "España"
+          "@type": "ProfessionalService",
+          "@id": "https://redlinestudio.es/#organization",
+          "name": "Redline Studio",
+          "url": "https://redlinestudio.es/",
+          "logo": "https://redlinestudio.es/assets/images/logo.png",
+          "image": "https://redlinestudio.es/assets/images/logo.png",
+          "email": "contacto@redlinestudio.es",
+          "description": "Estudio de desarrollo de software a medida, diseño web, branding y automatización con IA para pymes de España y Latinoamérica.",
+          "areaServed": ["ES", "MX", "CO", "CL", "PE", "AR"],
+          "priceRange": "€€€",
+          "sameAs": [
+            "https://www.linkedin.com/company/redlinestudio-es/",
+            "https://www.instagram.com/redlinestudio.es/",
+            "https://www.facebook.com/redlinestudiocompany"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Redline Studio",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software de gestión a medida", "url": "https://redlinestudio.es/servicios#software" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 4900, "priceCurrency": "EUR" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño y desarrollo web corporativo", "url": "https://redlinestudio.es/servicios#web" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 2400, "priceCurrency": "EUR" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding y diseño de packaging", "url": "https://redlinestudio.es/servicios#branding" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1800, "priceCurrency": "EUR" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización con inteligencia artificial", "url": "https://redlinestudio.es/servicios#ia" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "EUR" } }
+            ]
+          }
         },
         {
-          "@type": "Country",
-          "name": "México"
+          "@type": "WebSite",
+          "@id": "https://redlinestudio.es/#website",
+          "url": "https://redlinestudio.es/",
+          "name": "Redline Studio",
+          "inLanguage": "es",
+          "publisher": { "@id": "https://redlinestudio.es/#organization" }
         },
         {
-          "@type": "Country",
-          "name": "Colombia"
-        },
-        {
-          "@type": "Country",
-          "name": "Chile"
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "¿Cuánto cuesta un software de gestión a medida?", "acceptedAnswer": { "@type": "Answer", "text": "Nuestros sistemas de gestión empiezan en 4.900 €. El precio final depende de los módulos que necesites y te lo damos cerrado, por escrito, antes de empezar." } },
+            { "@type": "Question", "name": "¿Cuánto tarda en estar listo?", "acceptedAnswer": { "@type": "Answer", "text": "Una web corporativa suele estar lista en 3 a 5 semanas. Un sistema de gestión, entre 6 y 12 semanas según el alcance. Desde la primera semana ves avances que puedes probar." } },
+            { "@type": "Question", "name": "¿Por qué no usar un programa genérico?", "acceptedAnswer": { "@type": "Answer", "text": "Un programa genérico te obliga a cambiar tu forma de trabajar y suele dejar fuera justo lo que te hace perder dinero. Un sistema a medida se adapta a tu operación real y se paga con lo que deja de perderse." } },
+            { "@type": "Question", "name": "¿El código y los datos son míos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Al terminar el proyecto el código, los datos y los accesos son de tu empresa. No hay permanencia obligatoria." } },
+            { "@type": "Question", "name": "¿Trabajan con empresas fuera de España?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos en remoto con pymes de España y Latinoamérica, con reuniones por videollamada en tu horario." } }
+          ]
         }
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/company/redlinestudio-es/",
-        "https://www.instagram.com/redlinestudio.es/",
-        "https://www.facebook.com/redlinestudiocompany"
-      ],
-      "serviceType": [
-        "Desarrollo web corporativo",
-        "SEO corporativo y B2B",
-        "Campañas SEM (Google & LinkedIn Ads)",
-        "Captación de leads B2B",
-        "Diseño de marca y branding",
-        "Automatización de ventas con IA"
       ]
     }
   </script>
@@ -134,7 +118,7 @@
     <div class="boot-line" id="boot-line"></div>
   </div>
   <div class="cookie-consent" id="cookie-consent" hidden role="dialog" aria-label="Preferencias de analítica">
-    <p>Usamos analítica para medir visitas y mejorar la web. Puedes aceptar o rechazar esta medición.</p>
+    <p>Usamos analítica para saber qué páginas sirven y mejorar la web. Puedes aceptarla o rechazarla.</p>
     <div class="cookie-actions">
       <button type="button" class="cookie-button ghost" data-cookie-reject>Rechazar</button>
       <button type="button" class="cookie-button" data-cookie-accept>Aceptar analítica</button>
@@ -145,8 +129,9 @@
     <div class="mobile-links-container">
       <a href="/" class="m-link active"><span>// 01</span>Inicio</a>
       <a href="/servicios" class="m-link"><span>// 02</span>Servicios</a>
-      <a href="/blog" class="m-link"><span>// 03</span>Blog</a>
-      <a href="#contacto" class="m-link toggle-close"><span>// 04</span>Contacto</a>
+      <a href="/caso-aji-como-en-casa" class="m-link"><span>// 03</span>Caso de éxito</a>
+      <a href="/blog" class="m-link"><span>// 04</span>Blog</a>
+      <a href="#contacto" class="m-link toggle-close"><span>// 05</span>Contacto</a>
       <div class="m-lang-switcher" aria-label="Seleccionar idioma" role="navigation">
         <a href="/" class="m-lang-link active" onclick="localStorage.setItem('redline_lang_preferred', 'es')">Español</a>
         <span class="lang-separator-dot" aria-hidden="true">•</span>
@@ -171,15 +156,14 @@
   </div>
 
   <header>
-    <nav class="glass-nav" id="nav">
-      <a href="/" class="brand-mark">
+    <nav class="glass-nav" id="nav" aria-label="Principal">
+      <a href="/" class="brand-mark" aria-label="Redline Studio, inicio">
         <img src="/assets/images/logo.svg" alt="REDLINE STUDIO" class="nav-logo" width="72" height="72" />
       </a>
       <div class="nav-links">
-        <a href="/" class="active">Inicio</a>
         <a href="/servicios">Servicios</a>
+        <a href="/caso-aji-como-en-casa">Caso de éxito</a>
         <a href="/blog">Blog</a>
-        <a href="#contacto">Contacto</a>
         <div class="lang-dropdown" aria-label="Seleccionar idioma" role="navigation">
           <button class="lang-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
             <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -187,7 +171,7 @@
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span class="current-lang-text">Español</span>
+            <span class="current-lang-text">ES</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -198,6 +182,7 @@
             <li role="none"><a href="/de" class="lang-dropdown-item" data-lang="de" role="menuitem" onclick="localStorage.setItem('redline_lang_preferred', 'de')">Deutsch</a></li>
           </ul>
         </div>
+        <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
       </div>
       <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
         <span></span>
@@ -207,18 +192,26 @@
   </header>
 
   <main class="layout-wrapper" id="main-content">
+
+    <!-- HERO -->
     <section class="viewport-section hero-section">
       <div class="hero-copy">
-        <h1 class="apple-headline ui-reveal">
-          Desarrollo web corporativo y<br>
-          <span>SEO para empresas B2B.</span>
+        <p class="eyebrow ui-reveal">Software a medida · Webs · Branding · IA</p>
+        <h1 class="apple-headline hero-title ui-reveal">
+          Software a medida que hace <span>ganar más</span> a tu negocio.
         </h1>
         <p class="apple-paragraph ui-reveal">
-          Diseñamos páginas web premium y optimizamos tu posicionamiento SEO B2B en Google para captar leads corporativos de alto valor y acelerar tus reuniones comerciales.
+          Diseñamos y programamos el sistema, la web y la marca que tu empresa necesita para vender más y dejar de perder dinero en el día a día. Un solo equipo, precio cerrado y el código es tuyo.
         </p>
-        <div class="ui-reveal">
-          <a href="#contacto" class="action-trigger">Solicitar Auditoría B2B Gratuita</a>
+        <div class="hero-actions ui-reveal">
+          <a href="#contacto" class="action-trigger">Pide tu diagnóstico gratis</a>
+          <a href="/caso-aji-como-en-casa" class="ghost-trigger">Ver caso real <span aria-hidden="true">→</span></a>
         </div>
+        <ul class="hero-trust ui-reveal">
+          <li>Pymes de España y Latinoamérica</li>
+          <li>Respuesta en 24 h laborables</li>
+          <li>Sin permanencia</li>
+        </ul>
       </div>
       <aside class="hero-visual" aria-hidden="true">
         <div class="hero-mockup-wrap" id="hero-mockup">
@@ -226,64 +219,64 @@
           <div class="bw-body">
             <span id="bw-cursor" class="bw-cursor"></span>
             <div class="bw-nav">
-              <div class="bw-logo">MERIDIAN<span>.</span></div>
+              <div class="bw-logo">AJÍ<span>.</span></div>
               <div class="bw-nav-links">
-                <span>Servicios</span>
-                <span>Clientes</span>
-                <span>Contacto</span>
+                <span>Pedidos</span>
+                <span>Calle</span>
+                <span>Caja</span>
               </div>
             </div>
 
             <div class="bw-content">
-              <div class="bw-tag"><span class="bw-tag-dot"></span>Consultoría estratégica</div>
-              <div class="bw-h1">Resultados que<br>hablan <em>solos.</em></div>
-              <div class="bw-sub">Impulsamos empresas con estrategia, datos y ejecución. Más de 120 proyectos completados.</div>
-              <div class="bw-cta">Solicitar diagnóstico <span>→</span></div>
+              <div class="bw-tag"><span class="bw-tag-dot"></span>Jornada de hoy · en vivo</div>
+              <div class="bw-h1">Cada plato,<br>cada <em>sol</em>, cuadrado.</div>
+              <div class="bw-sub">Pedidos del local, venta en la calle y pedidos web en una sola caja.</div>
+              <div class="bw-cta">Cuadrar zona San Antonio <span>→</span></div>
 
               <div class="bw-metrics">
                 <div class="bw-mcard" id="bw-mc1">
-                  <div class="bw-mlabel">Ingresos / año</div>
-                  <div class="bw-mvalue"><span id="bw-rev">0</span><span class="bw-unit">M€</span></div>
-                  <div class="bw-mdelta">↗ +28%</div>
+                  <div class="bw-mlabel">Clientes hoy</div>
+                  <div class="bw-mvalue"><span id="bw-rev" data-target="300">0</span></div>
+                  <div class="bw-mdelta">↗ hora punta 7–10:30</div>
                 </div>
                 <div class="bw-mcard" id="bw-mc2">
-                  <div class="bw-mlabel">Leads / mes</div>
-                  <div class="bw-mvalue"><span id="bw-leads">0</span><span class="bw-unit"> leads</span></div>
-                  <div class="bw-mdelta">↗ +340%</div>
+                  <div class="bw-mlabel">Platos en calle</div>
+                  <div class="bw-mvalue"><span id="bw-leads" data-target="96">0</span></div>
+                  <div class="bw-mdelta">↗ todos registrados</div>
                 </div>
                 <div class="bw-mcard" id="bw-mc3">
-                  <div class="bw-mlabel">Cierre</div>
-                  <div class="bw-mvalue"><span id="bw-rate">0</span><span class="bw-unit">%</span></div>
-                  <div class="bw-mdelta">↗ +12 pp</div>
+                  <div class="bw-mlabel">Zonas cuadradas</div>
+                  <div class="bw-mvalue"><span id="bw-rate" data-target="3">0</span><span class="bw-unit">/3</span></div>
+                  <div class="bw-mdelta">↗ sin faltantes</div>
                 </div>
               </div>
 
               <div class="bw-charts">
                 <div class="bw-chart">
-                  <div class="bw-chart-title">Tráfico orgánico</div>
+                  <div class="bw-chart-title">Pedidos por hora</div>
                   <div class="bw-bars">
-                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b1"></span><small>Ene</small></div>
-                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b2"></span><small>Feb</small></div>
-                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b3"></span><small>Mar</small></div>
-                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b4"></span><small>Abr</small></div>
-                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b5"></span><small>May</small></div>
-                    <div class="bw-bar-wrap"><span class="bw-bar bw-active" id="bw-b6"></span><small>Jun</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b1" data-h="30"></span><small>7h</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b2" data-h="56"></span><small>8h</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar bw-active" id="bw-b3" data-h="60"></span><small>9h</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b4" data-h="44"></span><small>10h</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b5" data-h="26"></span><small>11h</small></div>
+                    <div class="bw-bar-wrap"><span class="bw-bar" id="bw-b6" data-h="14"></span><small>12h</small></div>
                   </div>
                 </div>
                 <div class="bw-chart">
-                  <div class="bw-chart-title">Embudo</div>
+                  <div class="bw-chart-title">Canales</div>
                   <div class="bw-funnel">
-                    <div class="bw-fi"><span>Visitas</span><div><i id="bw-f1"></i></div><b>100%</b></div>
-                    <div class="bw-fi"><span>Leads</span><div><i id="bw-f2"></i></div><b>42%</b></div>
-                    <div class="bw-fi"><span>Reun.</span><div><i id="bw-f3"></i></div><b>21%</b></div>
-                    <div class="bw-fi"><span>Cierres</span><div><i id="bw-f4"></i></div><b>9%</b></div>
+                    <div class="bw-fi"><span>Local</span><div><i id="bw-f1" data-w="100"></i></div><b>52%</b></div>
+                    <div class="bw-fi"><span>Calle</span><div><i id="bw-f2" data-w="62"></i></div><b>32%</b></div>
+                    <div class="bw-fi"><span>Web</span><div><i id="bw-f3" data-w="22"></i></div><b>11%</b></div>
+                    <div class="bw-fi"><span>Crédito</span><div><i id="bw-f4" data-w="10"></i></div><b>5%</b></div>
                   </div>
                 </div>
               </div>
 
               <div class="bw-live">
                 <span class="bw-live-dot"></span>
-                <span><strong id="bw-visitors">4</strong> visitantes activos · actualizado hace <strong id="bw-timer">12s</strong></span>
+                <span>Equipo conectado desde el celular · último pedido hace <strong id="bw-timer">12s</strong></span>
               </div>
             </div>
           </div>
@@ -291,108 +284,251 @@
       </aside>
     </section>
 
-    <section id="arquitectura" class="viewport-section">
-      <h2 class="apple-headline section-title ui-reveal">Servicios de Desarrollo Web Corporativo y SEO B2B</h2>
-      <div class="bento-container">
-        <article class="glass-panel ui-card span-3">
-          <div class="card-visual">
-            <svg class="service-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="10" y="20" width="80" height="60" rx="6" stroke="rgba(255,255,255,0.15)" fill="rgba(255,255,255,0.02)"></rect>
-              <circle cx="20" cy="30" r="2" fill="rgba(255,255,255,0.3)"></circle>
-              <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.3)"></circle>
-              <circle cx="34" cy="30" r="2" fill="rgba(255,255,255,0.3)"></circle>
-              <line x1="10" y1="40" x2="90" y2="40" stroke="rgba(255,255,255,0.15)"></line>
-              <path d="M38 52L28 60L38 68" stroke="#ff002b" stroke-width="2"></path>
-              <path d="M62 52L72 60L62 68" stroke="#ff002b" stroke-width="2"></path>
-              <line x1="53" y1="50" x2="47" y2="70" stroke="currentColor"></line>
-            </svg>
-          </div>
-          <span class="panel-tag">[ 01 / DESARROLLO WEB ]</span>
-          <h3>Desarrollo web corporativo</h3>
-          <p>Desarrollamos sitios web rápidos, premium y escalables orientados a la conversión. Diseños a medida para transmitir autoridad e impulsar tu negocio.</p>
-          <a href="/servicios#web" class="learn-more-link">Ver detalles ↗</a>
+    <!-- PROOF -->
+    <section class="viewport-section is-tight-top" aria-labelledby="prueba-titulo">
+      <h2 id="prueba-titulo" class="sr-only">Resultados del caso Ají como en casa</h2>
+      <div class="glass-panel ui-card proof-strip">
+        <div class="stat">
+          <span class="stat-value">300<em>+</em></span>
+          <span class="stat-label">clientes al día gestionados con un sistema que construimos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">90<em>+</em></span>
+          <span class="stat-label">platos diarios que antes salían a la calle sin registrar. Hoy, todos cuentan.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">3<em>→</em>1</span>
+          <span class="stat-label">canales de venta (local, calle y web) en una sola caja</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">0<em>s</em></span>
+          <span class="stat-label">de espera para saber si una carga de calle cuadra: el faltante sale al instante</span>
+        </div>
+      </div>
+      <p class="proof-source">Datos del caso real <a href="/caso-aji-como-en-casa">Ají como en casa →</a></p>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="viewport-section" aria-labelledby="problema-titulo">
+      <div class="section-head">
+        <span class="panel-tag ui-reveal">[ EL PROBLEMA ]</span>
+        <h2 id="problema-titulo" class="apple-headline section-title-sm ui-reveal">Si tu negocio funciona con Excel, WhatsApp y memoria, <span>está perdiendo dinero.</span></h2>
+        <p class="section-lead ui-reveal">No es falta de clientes. Es lo que se escapa entre una venta y la siguiente, y nadie ve.</p>
+      </div>
+      <div class="grid-3">
+        <article class="glass-panel ui-card pain-card">
+          <span class="pain-icon" aria-hidden="true">01</span>
+          <h3>Ventas que no quedan registradas</h3>
+          <p>Pedidos anotados a mano, cobros por Yape, Bizum o transferencia que nadie concilia, mercadería que sale sin rastro. A fin de mes los números nunca cuadran.</p>
+        </article>
+        <article class="glass-panel ui-card pain-card">
+          <span class="pain-icon" aria-hidden="true">02</span>
+          <h3>No sabes qué te deja ganancia</h3>
+          <p>Vendes mucho, pero no sabes cuánto te cuesta cada producto ni qué línea te hace perder. Decides a ojo y el margen se va en silencio.</p>
+        </article>
+        <article class="glass-panel ui-card pain-card">
+          <span class="pain-icon" aria-hidden="true">03</span>
+          <h3>Una web que no trae clientes</h3>
+          <p>Tienes una página que se ve "bien" pero no aparece en Google, carga lento y no convierte. Es un folleto caro, no un vendedor.</p>
+        </article>
+      </div>
+      <p class="bridge-line ui-reveal">Lo resolvemos con tecnología hecha <span>a la medida de cómo trabajas</span>, no al revés.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicios" class="viewport-section" aria-labelledby="servicios-titulo">
+      <div class="section-head">
+        <span class="panel-tag ui-reveal">[ QUÉ HACEMOS ]</span>
+        <h2 id="servicios-titulo" class="apple-headline section-title-sm ui-reveal">Cuatro formas de hacer que tu negocio <span>rinda más.</span></h2>
+        <p class="section-lead ui-reveal">Precios de partida públicos. Tras el diagnóstico te damos un presupuesto <strong>cerrado y por escrito</strong>.</p>
+      </div>
+      <div class="grid-2">
+        <article class="glass-panel ui-card offer-card is-featured">
+          <span class="offer-badge">El más pedido</span>
+          <span class="panel-tag">[ 01 / SOFTWARE A MEDIDA ]</span>
+          <h3>Sistema de gestión a medida</h3>
+          <p>Pedidos, caja, inventario, costes y reportes en un sistema hecho para tu operación. Tu equipo lo usa desde el celular, sin instalar nada.</p>
+          <ul class="check-list">
+            <li>Cuadres de caja y control de cobros automáticos</li>
+            <li>Coste real por producto y estado de resultados del mes</li>
+            <li>Roles y permisos: cada persona ve solo lo que debe</li>
+            <li>Funciona aunque se caiga el internet</li>
+          </ul>
+          <div class="price-line"><span class="price-from">Desde</span><span class="price-value">4.900 €</span></div>
         </article>
 
-        <article class="glass-panel ui-card span-3">
-          <div class="card-visual">
-            <svg class="service-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M50 15L59 41L85 50L59 59L50 85L41 59L15 50L41 41Z" fill="rgba(255, 0, 43, 0.08)" stroke="#ff002b" stroke-width="2"></path>
-              <circle cx="50" cy="50" r="22" stroke="rgba(255,255,255,0.1)"></circle>
-              <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4"></line>
-              <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4"></line>
-            </svg>
-          </div>
-          <span class="panel-tag">[ 02 / IDENTIDAD & MARCA ]</span>
-          <h3>Branding corporativo</h3>
-          <p>Diseñamos identidades visuales coherentes para elevar la percepción de valor de tu empresa y diferenciar tu propuesta frente a tus competidores.</p>
-          <a href="/servicios#branding" class="learn-more-link">Ver detalles ↗</a>
+        <article class="glass-panel ui-card offer-card">
+          <span class="panel-tag">[ 02 / WEB QUE VENDE ]</span>
+          <h3>Web corporativa que trae clientes</h3>
+          <p>Diseño premium, carga rápida y SEO técnico desde el primer día. Pensada para que quien entra te escriba, no para que solo mire.</p>
+          <ul class="check-list">
+            <li>Diseño a medida, sin plantillas</li>
+            <li>SEO técnico, datos estructurados y Google Analytics</li>
+            <li>Formularios que llegan directo a tu correo o CRM</li>
+            <li>Lista para campañas de Google Ads</li>
+          </ul>
+          <div class="price-line"><span class="price-from">Desde</span><span class="price-value">2.400 €</span></div>
         </article>
 
-        <article class="glass-panel ui-card span-2">
-          <div class="card-visual">
-            <svg class="service-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 20L42 55V85L58 75V55L85 20Z" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255,255,255,0.2)"></path>
-              <circle cx="35" cy="15" r="2.5" fill="currentColor"></circle>
-              <circle cx="50" cy="12" r="3" fill="#ff002b"></circle>
-              <circle cx="65" cy="16" r="2.5" fill="currentColor"></circle>
-              <path d="M50 35V45" stroke="#ff002b" stroke-dasharray="2 2" stroke-width="2"></path>
-              <circle cx="50" cy="65" r="3" fill="#ff002b"></circle>
-              <path d="M47 80H53" stroke="currentColor"></path>
-            </svg>
-          </div>
-          <span class="panel-tag">[ 03 / CAPTACIÓN & GROWTH ]</span>
-          <h3>Captación de leads para empresas</h3>
-          <p>Creamos embudos de ventas B2B y sistemas de generación de leads cualificados diseñados para conseguir reuniones con decisores de compra.</p>
-          <a href="/servicios#growth" class="learn-more-link">Ver detalles ↗</a>
+        <article class="glass-panel ui-card offer-card">
+          <span class="panel-tag">[ 03 / BRANDING & PACKAGING ]</span>
+          <h3>Marca y packaging que venden solos</h3>
+          <p>Identidad visual y envases listos para imprenta: cajas, etiquetas y troqueles con medidas exactas, para que tu producto destaque en el lineal.</p>
+          <ul class="check-list">
+            <li>Logotipo, colores, tipografías y manual de marca</li>
+            <li>Diseño de cajas, etiquetas y bolsas con troquel</li>
+            <li>Archivos finales preparados para imprenta (CMYK)</li>
+          </ul>
+          <div class="price-line"><span class="price-from">Desde</span><span class="price-value">1.800 €</span></div>
         </article>
 
-        <article class="glass-panel ui-card span-2">
-          <div class="card-visual">
-            <svg class="service-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 80H80" stroke="rgba(255,255,255,0.2)"></path>
-              <path d="M20 80V60H35V45H50V25H65" stroke="rgba(255,255,255,0.15)"></path>
-              <path d="M25 70L40 50L55 35L75 15M75 15H60M75 15V30" stroke="#ff002b" stroke-width="2"></path>
-              <circle cx="40" cy="50" r="10" fill="rgba(13,13,15,0.9)" stroke="currentColor"></circle>
-              <line x1="47" y1="57" x2="57" y2="67" stroke="currentColor" stroke-width="2"></line>
-            </svg>
-          </div>
-          <span class="panel-tag">[ 04 / SEO & SEM ]</span>
-          <h3>Agencia SEO B2B y Campañas SEM</h3>
-          <p>Especialistas en consultoría SEO B2B on-page, contenidos estratégicos y campañas pagadas en Google Ads y LinkedIn Ads con retorno de inversión.</p>
-          <a href="/servicios#seo" class="learn-more-link">Ver detalles ↗</a>
+        <article class="glass-panel ui-card offer-card">
+          <span class="panel-tag">[ 04 / AUTOMATIZACIÓN IA ]</span>
+          <h3>Automatización con IA</h3>
+          <p>Las tareas repetitivas las hace una máquina: responder consultas, calificar clientes, enviar reportes y publicar contenido.</p>
+          <ul class="check-list">
+            <li>Respuestas automáticas por web, correo o WhatsApp</li>
+            <li>Calificación de clientes potenciales antes de llamarlos</li>
+            <li>Reportes diarios que llegan solos a tu correo</li>
+          </ul>
+          <div class="price-line"><span class="price-from">Desde</span><span class="price-value">1.200 €</span></div>
         </article>
+      </div>
+      <p class="retainer-note ui-reveal">¿Ya lo tienes funcionando? <strong>Soporte, hosting y mejoras continuas desde 190 €/mes.</strong> <a href="/servicios" class="learn-more-link">Ver todos los servicios ↗</a></p>
+    </section>
 
-        <article class="glass-panel ui-card span-2">
-          <div class="card-visual">
-            <svg class="service-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="50" cy="50" r="10" fill="rgba(255, 0, 43, 0.15)" stroke="#ff002b" stroke-width="2"></circle>
-              <circle cx="20" cy="50" r="4" fill="currentColor"></circle>
-              <circle cx="35" cy="25" r="4" fill="currentColor"></circle>
-              <circle cx="65" cy="25" r="4" fill="currentColor"></circle>
-              <circle cx="80" cy="50" r="4" fill="currentColor"></circle>
-              <circle cx="65" cy="75" r="4" fill="currentColor"></circle>
-              <circle cx="35" cy="75" r="4" fill="currentColor"></circle>
-              <line x1="24" y1="50" x2="40" y2="50" stroke="rgba(255,255,255,0.2)"></line>
-              <line x1="80" y1="50" x2="60" y2="50" stroke="rgba(255,255,255,0.2)"></line>
-              <line x1="38" y1="28" x2="46" y2="42" stroke="rgba(255,255,255,0.2)"></line>
-              <line x1="62" y1="28" x2="54" y2="42" stroke="rgba(255,255,255,0.2)"></line>
-              <line x1="62" y1="72" x2="54" y2="58" stroke="rgba(255,255,255,0.2)"></line>
-              <line x1="38" y1="72" x2="46" y2="58" stroke="rgba(255,255,255,0.2)"></line>
-            </svg>
+    <!-- CASE -->
+    <section id="caso" class="viewport-section" aria-labelledby="caso-titulo">
+      <div class="glass-panel-large ui-card case-teaser">
+        <div>
+          <span class="panel-tag">[ CASO REAL · RESTAURACIÓN · LIMA ]</span>
+          <h2 id="caso-titulo">Ají como en casa: 300 clientes al día y cada sol cuadrado.</h2>
+          <p>Un restaurante de menú que vende en su local, en la calle y por web. Entre 90 y 100 platos diarios salían a venderse sin quedar registrados en ningún lado: casi la mitad del negocio a ciegas.</p>
+          <p>Construimos un sistema a su medida que registra cada pedido en segundos, cuadra cada carga de calle al momento y muestra cuánto cuesta de verdad cada plato.</p>
+          <div class="hero-actions">
+            <a href="/caso-aji-como-en-casa" class="action-trigger">Leer el caso completo</a>
           </div>
-          <span class="panel-tag">[ 05 / AUTOMATIZACIÓN IA ]</span>
-          <h3>Automatización de ventas con IA</h3>
-          <p>Integramos inteligencia artificial para la calificación de prospectos, respuestas automáticas y optimización de tus procesos comerciales.</p>
-          <a href="/servicios#ia" class="learn-more-link">Ver detalles ↗</a>
+        </div>
+        <div class="before-after">
+          <div class="ba-col">
+            <h3>Antes</h3>
+            <ul>
+              <li>Pedidos y cobros anotados a mano en una pizarra</li>
+              <li>Platos de la calle sin registrar</li>
+              <li>Ingresos y egresos que nunca cuadraban</li>
+              <li>Sin saber qué plato dejaba ganancia</li>
+            </ul>
+          </div>
+          <div class="ba-col is-after">
+            <h3>Después</h3>
+            <ul>
+              <li>Cada pedido registrado desde el celular, con ticket impreso</li>
+              <li>Cada carga de calle cuadrada con el vendedor delante</li>
+              <li>Pedidos web con mapa de reparto y pago por Yape</li>
+              <li>Coste por plato y resultados del mes en tiempo real</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="viewport-section" aria-labelledby="proceso-titulo">
+      <div class="section-head">
+        <span class="panel-tag ui-reveal">[ CÓMO TRABAJAMOS ]</span>
+        <h2 id="proceso-titulo" class="apple-headline section-title-sm ui-reveal">De la primera llamada al sistema funcionando, <span>sin sorpresas.</span></h2>
+      </div>
+      <ol class="grid-4 steps">
+        <li class="glass-panel ui-card">
+          <span class="step-num">PASO 01</span>
+          <h3>Diagnóstico gratis</h3>
+          <p>30 minutos por videollamada. Vemos dónde pierdes dinero o clientes y qué conviene resolver primero.</p>
+        </li>
+        <li class="glass-panel ui-card">
+          <span class="step-num">PASO 02</span>
+          <h3>Propuesta cerrada en 48 h</h3>
+          <p>Alcance, plazos y precio fijo por escrito. Si no te convence, no pagas nada.</p>
+        </li>
+        <li class="glass-panel ui-card">
+          <span class="step-num">PASO 03</span>
+          <h3>Avances cada semana</h3>
+          <p>Construimos por partes y lo pruebas con tu equipo desde la primera semana, no al final.</p>
+        </li>
+        <li class="glass-panel ui-card">
+          <span class="step-num">PASO 04</span>
+          <h3>Lanzamiento y soporte</h3>
+          <p>Formamos a tu equipo, pasamos tus datos y seguimos contigo con mejoras y soporte.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WHY -->
+    <section class="viewport-section" aria-labelledby="porque-titulo">
+      <div class="section-head">
+        <span class="panel-tag ui-reveal">[ POR QUÉ REDLINE ]</span>
+        <h2 id="porque-titulo" class="apple-headline section-title-sm ui-reveal">Diseño, código y negocio <span>en el mismo equipo.</span></h2>
+      </div>
+      <div class="grid-2">
+        <article class="glass-panel ui-card">
+          <h3>Entendemos tu negocio antes de programar</h3>
+          <p>Nuestro primer sistema nació dentro de un restaurante en hora punta. Diseñamos para la persona que tiene un cliente esperando, no para una demo.</p>
+        </article>
+        <article class="glass-panel ui-card">
+          <h3>Precio cerrado, sin letra pequeña</h3>
+          <p>Sabes lo que pagas antes de empezar. Si el alcance cambia, lo hablamos y lo decides tú.</p>
+        </article>
+        <article class="glass-panel ui-card">
+          <h3>El código y los datos son tuyos</h3>
+          <p>Sin permanencia ni dependencia. Al terminar, todo queda a nombre de tu empresa.</p>
+        </article>
+        <article class="glass-panel ui-card">
+          <h3>Del sistema a la caja de cartón</h3>
+          <p>Software, web, marca y packaging bajo un mismo criterio. Una sola conversación en lugar de cuatro proveedores.</p>
         </article>
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="viewport-section" aria-labelledby="faq-titulo">
+      <div class="section-head">
+        <span class="panel-tag ui-reveal">[ PREGUNTAS FRECUENTES ]</span>
+        <h2 id="faq-titulo" class="apple-headline section-title-sm ui-reveal">Lo que nos preguntan <span>antes de empezar.</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="glass-panel ui-card faq-item">
+          <summary>¿Cuánto cuesta un software de gestión a medida?</summary>
+          <p>Nuestros sistemas de gestión empiezan en 4.900 €. El precio final depende de los módulos que necesites y te lo damos cerrado, por escrito, antes de empezar.</p>
+        </details>
+        <details class="glass-panel ui-card faq-item">
+          <summary>¿Cuánto tarda en estar listo?</summary>
+          <p>Una web corporativa suele estar lista en 3 a 5 semanas. Un sistema de gestión, entre 6 y 12 semanas según el alcance. Desde la primera semana ves avances que puedes probar.</p>
+        </details>
+        <details class="glass-panel ui-card faq-item">
+          <summary>¿Por qué no usar un programa genérico?</summary>
+          <p>Un programa genérico te obliga a cambiar tu forma de trabajar y suele dejar fuera justo lo que te hace perder dinero. Un sistema a medida se adapta a tu operación real y se paga con lo que deja de perderse.</p>
+        </details>
+        <details class="glass-panel ui-card faq-item">
+          <summary>¿El código y los datos son míos?</summary>
+          <p>Sí. Al terminar el proyecto el código, los datos y los accesos son de tu empresa. No hay permanencia obligatoria.</p>
+        </details>
+        <details class="glass-panel ui-card faq-item">
+          <summary>¿Trabajan con empresas fuera de España?</summary>
+          <p>Sí. Trabajamos en remoto con pymes de España y Latinoamérica, con reuniones por videollamada en tu horario.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="viewport-section">
       <div id="contacto" class="glass-panel ui-card full-width contact-panel">
-        <span class="panel-tag">[ AUDITORÍA DE CAPTACIÓN B2B ]</span>
-        <h2 class="apple-headline contact-title">Consigue una Auditoría Gratuita de Captación B2B</h2>
-        <p class="contact-intro">Analizamos el desarrollo web de tu empresa, tu posicionamiento SEO B2B actual y tu estrategia de captación de leads sin compromiso. Recibe tu plan de acción en 24h laborables.</p>
+        <span class="panel-tag">[ DIAGNÓSTICO GRATUITO ]</span>
+        <h2 class="apple-headline contact-title">Cuéntanos qué te hace perder dinero hoy.</h2>
+        <p class="contact-intro">Te respondemos en 24 h laborables con una propuesta de llamada de 30 minutos. Sin compromiso y sin presentaciones de venta eternas.</p>
+        <ul class="contact-promise">
+          <li>Gratis</li>
+          <li>Precio cerrado si seguimos</li>
+          <li>Tus datos no se comparten</li>
+        </ul>
         <form action="/send-lead.php" method="POST" data-form-name="contact_home">
           <input type="hidden" name="subject" value="Nuevo Lead - REDLINE STUDIO" />
           <input type="hidden" name="source_page" value="home" />
@@ -400,60 +536,72 @@
           <input type="hidden" name="ts" value="" />
           <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <label class="sr-only" for="lead-name">Tu nombre completo</label>
-          <input id="lead-name" class="form-control" name="Nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required />
+          <div class="form-row">
+            <div>
+              <label class="sr-only" for="lead-name">Tu nombre</label>
+              <input id="lead-name" class="form-control" name="Nombre" type="text" autocomplete="name" placeholder="Tu nombre" required />
+            </div>
+            <div>
+              <label class="sr-only" for="lead-company">Empresa</label>
+              <input id="lead-company" class="form-control" name="Empresa" type="text" autocomplete="organization" placeholder="Empresa" required />
+            </div>
+            <div>
+              <label class="sr-only" for="lead-email">Correo</label>
+              <input id="lead-email" class="form-control" name="Email" type="email" autocomplete="email" placeholder="Correo" required />
+            </div>
+            <div>
+              <label class="sr-only" for="lead-phone">Teléfono o WhatsApp</label>
+              <input id="lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Teléfono o WhatsApp" required />
+            </div>
+            <div>
+              <label class="sr-only" for="lead-country">País</label>
+              <select id="lead-country" class="form-control" name="Pais" required>
+                <option value="" disabled selected>País</option>
+                <option value="España">España</option>
+                <option value="México">México</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Perú">Perú</option>
+                <option value="Chile">Chile</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Otro">Otro país</option>
+              </select>
+            </div>
+            <div>
+              <label class="sr-only" for="lead-need">¿Qué necesitas?</label>
+              <select id="lead-need" class="form-control" name="Servicio_Interes" required>
+                <option value="" disabled selected>¿Qué necesitas?</option>
+                <option value="software-a-medida">Sistema de gestión a medida</option>
+                <option value="web">Web corporativa</option>
+                <option value="branding-packaging">Branding o packaging</option>
+                <option value="automatizacion-ia">Automatización con IA</option>
+                <option value="no-lo-se">Aún no lo sé, quiero el diagnóstico</option>
+              </select>
+            </div>
+          </div>
 
-          <label class="sr-only" for="lead-company">Nombre de tu empresa</label>
-          <input id="lead-company" class="form-control" name="Empresa" type="text" autocomplete="organization" placeholder="Nombre de tu empresa" required />
-
-          <label class="sr-only" for="lead-country">País</label>
-          <select id="lead-country" class="form-control" name="Pais" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
-            <option value="" disabled selected>País</option>
-            <option value="España">España</option>
-            <option value="México">México</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Chile">Chile</option>
-            <option value="Otro">Otro país</option>
-          </select>
-
-          <label class="sr-only" for="lead-need">¿En qué área de captación necesitas crecer?</label>
-          <select id="lead-need" class="form-control" name="Servicio_Interes" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);" required>
-            <option value="" disabled selected>¿En qué área de captación necesitas crecer?</option>
-            <option value="desarrollo-web">Desarrollo Web Corporativo</option>
-            <option value="seo">Posicionamiento en Google (SEO B2B)</option>
-            <option value="leads-ads">Generación de Leads B2B (Google / LinkedIn Ads)</option>
-            <option value="branding">Branding Corporativo y Rediseño</option>
-            <option value="automatizacion-ia">Automatización e IA Comercial</option>
-          </select>
-
-          <label class="sr-only" for="lead-email">Correo corporativo</label>
-          <input id="lead-email" class="form-control" name="Email" type="email" autocomplete="email" placeholder="Correo corporativo" required />
-
-          <label class="sr-only" for="lead-phone">Teléfono de contacto</label>
-          <input id="lead-phone" class="form-control" name="Telefono" type="tel" autocomplete="tel" placeholder="Teléfono de contacto" required />
-
-          <label class="sr-only" for="lead-website">Tu sitio web actual (opcional)</label>
-          <input id="lead-website" class="form-control" name="Sitio_Web" type="text" autocomplete="url" placeholder="Tu sitio web actual (opcional)" />
-
-          <label class="sr-only" for="lead-budget">Presupuesto aproximado (opcional)</label>
-          <select id="lead-budget" class="form-control" name="Presupuesto" style="background: #0d0d0f; color: #f5f5f7; border: 1px solid rgba(255, 255, 255, 0.15);">
+          <label class="sr-only" for="lead-budget">Presupuesto aproximado</label>
+          <select id="lead-budget" class="form-control" name="Presupuesto">
             <option value="" selected>Presupuesto aproximado (opcional)</option>
-            <option value="menos-1000">Menos de 1.000€</option>
-            <option value="1000-3000">1.000€ - 3.000€</option>
-            <option value="3000-6000">3.000€ - 6.000€</option>
-            <option value="mas-6000">Más de 6.000€</option>
-            <option value="prefiero-no-decir">Prefiero no decirlo</option>
+            <option value="menos-1500">Menos de 1.500 €</option>
+            <option value="1500-4000">1.500 € – 4.000 €</option>
+            <option value="4000-10000">4.000 € – 10.000 €</option>
+            <option value="mas-10000">Más de 10.000 €</option>
+            <option value="no-lo-se">Aún no lo sé</option>
           </select>
+
+          <label class="sr-only" for="lead-website">Tu web actual (opcional)</label>
+          <input id="lead-website" class="form-control" name="Sitio_Web" type="text" autocomplete="url" placeholder="Tu web actual (opcional)" />
 
           <div class="form-agreement-box">
             <input type="checkbox" id="home-agreement-check" name="Aceptacion_Condiciones" aria-describedby="agreement-policy-desc" required />
             <label for="home-agreement-check" id="agreement-policy-desc">
-              Acepto que traten mis datos para enviarme la propuesta. <a href="/privacidad" target="_blank">Ver política de privacidad</a>.
+              Acepto que usen mis datos para responder a mi solicitud. <a href="/privacidad" target="_blank">Política de privacidad</a>.
             </label>
           </div>
 
-          <button type="submit" class="action-trigger full-width">Solicitar Auditoría B2B Gratuita</button>
-          <p class="form-note" role="status" aria-live="polite" data-default-message="Analizamos tu web actual y te enviamos un plan de mejora en 24h laborables sin compromiso.">Analizamos tu web actual y te enviamos un plan de mejora en 24h laborables sin compromiso.</p>
+          <button type="submit" class="action-trigger full-width">Quiero mi diagnóstico gratis</button>
+          <p class="form-note" role="status" aria-live="polite" data-default-message="Te respondemos en 24 h laborables.">Te respondemos en 24 h laborables.</p>
+        </form>
       </div>
     </section>
   </main>
@@ -475,8 +623,8 @@
     </div>
     <div class="footer-bottom">
       <a href="mailto:contacto@redlinestudio.es" class="footer-contact">contacto@redlinestudio.es</a>
-      <p>© 2026 REDLINE STUDIO. Todos los derechos reservados.</p>
-      <p class="powered-by">POWERED BY <span>REDLINE</span></p>
+      <p>© 2026 Redline Studio · <a href="/privacidad" class="footer-contact">Privacidad</a></p>
+      <p class="powered-by">SOFTWARE · WEB · BRANDING · <span>IA</span></p>
     </div>
   </footer>
 
