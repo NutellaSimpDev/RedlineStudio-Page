@@ -19,17 +19,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      # Only uploads what changed since the last deploy (it keeps a small
-      # .ftp-deploy-sync-state.json on the server, hidden by .htaccess).
-      # Files on the server that this repo never uploaded are left alone,
-      # so subdomains and anything uploaded by hand are not touched.
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      # lftp instead of a Node FTP client: Hostinger's FTP resets idle data
+      # connections, and lftp reconnects and retries on its own.
+      # mirror --reverse uploads public_html/ to the server; without --delete
+      # it never removes anything on the server (subdomains, files uploaded
+      # by hand). The password travels in LFTP_PASSWORD, never on the command
+      # line, so special characters in it can't break the command.
       - name: Upload public_html to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.HOSTINGER_FTP_HOST }}
-          username: ${{ secrets.HOSTINGER_FTP_USER }}
-          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          local-dir: ./public_html/
-          server-dir: ${{ vars.HOSTINGER_SERVER_DIR || './' }}
+        env:
+          FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+          FTP_USER: ${{ secrets.HOSTINGER_FTP_USER }}
+          LFTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          SERVER_DIR: ${{ vars.HOSTINGER_SERVER_DIR || '.' }}
+        run: |
+          lftp -u "$FTP_USER" --env-password "$FTP_HOST" <<EOF
+          set net:max-retries 6
+          set net:reconnect-interval-base 5
+          set net:timeout 30
+          set ftp:passive-mode yes
+          set ftp:ssl-allow yes
+          set ssl:verify-certificate no
+          set mirror:parallel-transfer-count 1
+          mirror --reverse --verbose --exclude-glob .git* ./public_html/ "$SERVER_DIR"
+          bye
+          EOF

@@ -1,7 +1,7 @@
 # Despliegue automático: GitHub → Hostinger
 
 Cada vez que haces `git push` a `main` con cambios en `public_html/`, GitHub sube
-solo los archivos que cambiaron a Hostinger. El archivo que lo hace es
+la carpeta a Hostinger con lftp, que reintenta solo si Hostinger corta la conexión. El archivo que lo hace es
 `.github/workflows/deploy.yml`.
 
 ## Antes de la primera vez: haz una copia de lo que hay en Hostinger
@@ -60,7 +60,7 @@ Desde ahí, cada `git push` a `main` publica solo.
 ## Qué no toca
 
 - El subdominio `ajicomoencasa.redlinestudio.es` y cualquier archivo que hayas
-  subido a mano: el despliegue solo borra archivos que él mismo subió antes.
+  subido a mano: el despliegue sube y reemplaza archivos, nunca borra nada.
 - Los archivos fuera de `public_html/` del repositorio (`docs/`, `analytics/`,
   `firma.html`, etc.) nunca se publican.
 
@@ -68,7 +68,9 @@ Desde ahí, cada `git push` a `main` publica solo.
 
 - **"Login authentication failed"**: usuario o contraseña mal copiados en los
   secretos.
-- **"getaddrinfo ENOTFOUND"**: el host FTP está mal escrito.
+- **"getaddrinfo ENOTFOUND"** o **"Name or service not known"**: el host FTP
+  está mal escrito. Debe ir solo la IP o el dominio, sin `ftp://`, sin puerto y
+  sin espacios.
 - **La web se ve igual que antes**: revisa el paso 3 (carpeta equivocada) y
   borra la caché del navegador.
 - **Quieres borrar páginas viejas que ya estaban en el servidor** (como la de
