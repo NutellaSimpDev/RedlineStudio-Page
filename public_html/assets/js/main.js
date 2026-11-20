@@ -610,6 +610,9 @@ function initMotionEnhancements() {
 // stands on its own.
 
 const LIQUID_GLASS_SELECTOR = '.glass-nav, .glass-panel, .glass-panel-large, .cookie-consent';
+// Real refraction only where it pays off: a live backdrop filter on every card
+// dropped scrolling to ~48 fps, so the cards use the painted CSS glass.
+const LIQUID_REFRACT_SELECTOR = '.glass-nav, .tool-tile';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 function supportsLiquidRefraction() {
@@ -722,7 +725,7 @@ function initGlassSheen() {
 function initLiquidGlass() {
   initGlassSheen();
 
-  const surfaces = Array.from(document.querySelectorAll(LIQUID_GLASS_SELECTOR));
+  const surfaces = Array.from(document.querySelectorAll(LIQUID_REFRACT_SELECTOR));
   if (!surfaces.length || !supportsLiquidRefraction()) return;
 
   const host = document.createElementNS(SVG_NS, 'svg');
@@ -750,8 +753,9 @@ function initLiquidGlass() {
     rendered.set(surface, key);
 
     const isNav = surface.classList.contains('glass-nav');
-    const bezel = Math.max(14, Math.min(44, Math.min(width, height) * 0.22));
-    const scale = isNav ? 120 : 140;
+    const isTile = surface.classList.contains('tool-tile');
+    const bezel = isTile ? width * 0.3 : Math.max(14, Math.min(44, Math.min(width, height) * 0.22));
+    const scale = isNav ? 120 : isTile ? 60 : 140;
     const id = `liquid-glass-${index}`;
 
     host.querySelector(`#${id}`)?.remove();
